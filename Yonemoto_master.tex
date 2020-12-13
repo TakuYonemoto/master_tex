@@ -1,0 +1,108 @@
+\documentclass[report]{jsbook}
+\widebaselines
+\setlength{\textwidth}{\fullwidth}	
+\setlength{\evensidemargin}{\oddsidemargin}
+\usepackage{bm}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[hyphens]{url}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{comment}
+\usepackage{subfig}
+\usepackage{txfonts}
+\usepackage{tabularx}
+\usepackage{lscape}
+\usepackage{color}
+\usepackage{mathrsfs}
+\usepackage{subfiles}
+\usepackage{ascmac}
+\usepackage{setspace}
+
+\title{
+修士論文\\[1.8cm]
+{\bf MEG II実験におけるマルチピクセル陽電子タイミングカウンターの位置較正に関する研究} \\
+{\LARGE Research on Position Calibration of Multi-pixelated Positron Timing Counter in MEG II Experiment}
+\\[0.8cm]}
+\author{東京大学大学院 理学系研究科 物理学専攻\\
+素粒子物理国際研究センター 森研究室\\ \\
+35-196101\\[2.5mm]
+\LARGE 米本 拓}
+\date{2020年 1月}
+
+\begin{document}
+
+\maketitle
+\chapter*{概要}
+
+標準理論を超える物理の１つである$\mu \to e\gamma$崩壊を世界最高感度で探索した国際共同実験MEGでは、崩壊分岐比に上限値$4.2 \times 10^{-13}$を与えたが発見には至らなかった。分岐比感度$\mathcal{O}(10^{-14})$を目指し$\mu \to e\gamma$崩壊の発見へと至ろうとする後継実験MEG IIのために、多数のプラスチックシンチレータとシリコン光検出器(SiPM)を搭載する新たなデザインの陽電子タイミングカウンターが製作された。\\ \\
+・pTCの新たなデザインの説明 \\ \\
+・位置較正について \\ \\
+・成果 \\ \\
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+\subfile{intro.tex}
+\subfile{physics.tex}
+\subfile{pTC.tex}
+\subfile{pos_calib.tex}
+\subfile{concl.tex}
+
+\chapter*{謝辞}
+
+\part{付録}
+\appendix
+\chapter{3D測量機器について}
+\chapter{軌跡再構成について}
+\section{カルマンフィルター}
+\section{クラスタリング}
+\section{ドリフトチェンバーとのマッチング}
+
+
+\begin{comment}
+・文献の引用の仕方
+
+データは参考文献\cite{rika} にあったものを使った．
+この文献\cite{ten}も参考にした。
+
+・図の挿入の仕方
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=7cm]{./plot1.pdf}
+\caption{サイン関数のグラフ}
+\end{center}
+\end{figure}
+
+
+\begin{verbatim}
+#include <iostream>
+using namespace std;
+int main() {
+for(int i = 1; i <= 5; i++) {
+cout << "こんにちは" << i << endl;
+}
+return 0;
+}
+\end{verbatim}
+\verb|\usepackage{ascmac}|して\verb|screen| 環境を使うと，枠がつきます。
+\begin{screen}
+\begin{verbatim}
+#include <iostream>
+using namespace std;
+int main() {
+for(int i = 1; i <= 5; i++) {
+cout << "こんにちは" << i << endl;
+}
+return 0;
+}
+\end{verbatim}
+\end{screen}
+
+\begin{thebibliography}{99}
+\bibitem{rika} 国立天文台編，理科年表 (丸善)
+\bibitem{ten} 天文年鑑，誠文堂新光社。
+\end{thebibliography}
+
+\end{comment}
+
+\end{document}
