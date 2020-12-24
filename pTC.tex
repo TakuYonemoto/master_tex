@@ -2,9 +2,38 @@
 
 \begin{document}
 \chapter{陽電子タイミングカウンター}
-\section{背景}
-\subsection{MEG 実験での問題点}
-\subsection{MEG II実験における新たなデザイン}
+本章では、本研究の対象である陽電子タイミングカウンター(pTC)の原理及びその構成についてまとめる。
+\section{MEG II実験でのpTCへの要請}
+MEG II実験において、pTCは陽電子の時間を測定することで、ミューオンの崩壊時刻を精度良く求める役割を担う。
+
+信号事象である$\mu^+ \to e^+\gamma$崩壊が起こった場合、崩壊時刻の分解能$\sigma_{t_{vertex}}$は以下の式で与えられる。 \\
+
+\begin{eqnarray}
+\sigma_{t_{vertex}} & = & \sqrt{\sigma_{t_{e^+}}^2 + \sigma_{t_{\gamma}}^2} \nonumber \\ 
+& = & \sqrt{\left( \frac{\sigma_{l_{e^+}}^{\rm CDCH}}{c} \right)^2 + (\sigma_{t_{e^+}}^{\rm pTC})^2 + \sigma_{t_{\gamma}}^2}
+\end{eqnarray}
+
+ここで、$\sigma_{t_{e^+}}$は陽電子測定の時間分解能、$\sigma_{t_{\gamma}}$はガンマ線測定の時間分解能、$\sigma_{l_{e^+}}^{\rm CDCH}$はドリフトチェンバー(CDCH)による陽電子軌跡の不確かさ、$c$は光速、$\sigma_{t_{e^+}}^{\rm pTC}$はpTCによる陽電子測定の時間分解能を表す。モンテカルロシミュレーションにより、液体キセノンガンマ線検出器(LXe)によるガンマ線測定の時間分解能は$50-70 \rm ps$、CDCHによる陽電子軌跡の不確かさは$\sigma_{l_{e^+}}^{CDCH}/c \sim 70 \rm ps$と見積もられているため、$\sigma_{t_{vertex}} \le 84 \rm ps$を達成する(3.7)ためには、pTCは$\sigma_{t_{e^+}}^{\rm pTC} \sim 46 \rm ps$を満たす必要がある。
+
+\subsection{MEG実験におけるTC}
+MEG実験における陽電子タイミングカウンター(TC)は、30本の大型シンチレーターバーと読み出しの光電子増倍管(PMT)からなるものであった。問題点としては、シンチレーターバーが大きいことで読み出し以前の不定性が生まれること、また同様の理由からパイルアップイベントに弱いことがあった。加えて、シンチレーターバー間での時間較正の精度も悪く、COBRA磁場下でのPMTの劣化なども相まって、最終的な運用における陽電子の時間分解能は$70 \rm ps$程度であった。
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=7cm]{images/MEGTC.png}
+\caption{MEG実験における陽電子タイミングカウンター(TC)}
+\end{center}
+\end{figure}
+
+\subsection{MEG II実験におけるアップグレード}
+MEG II実験では、pTCは小型シンチレーションカウンター「ピクセル」を合計512個を用いることで、高い時間分解能を得る。MEG実験におけるTCからの主な改善点として、
+\begin{itemize}
+\item 高性能な光検出器であるシリコン光検出器(SIPM)により、各ピクセルが小型かつ高い時間分解能を持つ。
+\item 複数ヒット検出により、全体としての時間分解能はさらに高精度になる。
+\item 各ピクセルが小型であるため、パイルアップイベントが生じにくい。
+\item SiPMには磁場耐性がある。
+\end{itemize}
+
 \section{マルチピクセル化された陽電子タイミングカウンター}
 \subsection{複数ヒットの仕組み}
 \subsection{時間分解能}
@@ -15,9 +44,16 @@
 \section{読み出し}
 \section{解析}
 
-\chapter{時間較正}
-\section{レーザー較正}
-\section{ミシェル較正}
+\section{時間較正}
+\subsection{レーザー較正}
+\subsection{ミシェル較正}
+
+\ifthenelse{\boolean{masterflag}}
+{ }{
+\begin{thebibliography}{99}
+\bibitem{}
+\end{thebibliography}
+}
 
 
 \end{document}

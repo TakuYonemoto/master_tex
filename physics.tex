@@ -2,48 +2,91 @@
 %\setcounter[chapter]{2}
 \begin{document}
 
-\chapter{$\mu \to e \gamma$ 崩壊}
+\chapter{$\mu^+ \to e^+ \gamma$ 崩壊}
+本章では、荷電レプトンフレーバーの破れ(cLFV)の１つである$\mu^+ \to e^+ \gamma$ 崩壊探索のモチベーションや現状について述べる。標準模型で禁止されているこの崩壊過程は、超対称性模型を中心とした新物理において実験的に観測可能であると予言されている。
 
-\section{標準理論において}
-ミューオンの基本性質を以下にまとめる。
-
-\begin{table}[h]
- \label{table:Muon_prop}
- \centering
-  \begin{tabular}{cc}
-   \hline
-   質量 & 105.6583745 $\pm$ 0.0000024 MeV \\
-   寿命 & (2.1969811 $\pm$ 0.0000022 $\times 10^{-6}$) s \\ 
-   \hline
-  \end{tabular}
- \caption{ミューオンの性質 \cite{muon}}
-\end{table}
-   
-標準理論において、
-
-
+\section{標準模型}
+現代素粒子物理学において、標準模型は一定のエネルギー領域($\sim 100 {\rm GeV}$)における多くの実験的事実と整合する、理論的な枠組みとなるような理論モデルである。図\ref{fig: sm_par}に示される18の粒子は、2012年のヒッグス粒子発見に伴ってその全てが発見されている。
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=10cm]{./images/particles_sm.png}
 \caption{標準理論における素粒子 \cite{particles_sm}}
 \end{center}
 \end{figure}
+\label{fig: sm_par}
+
+\section{ミューオンに関する公称値}
+ミューオン$\mu^+$の基本性質を表\ref{tab: Mu_prop}に、各崩壊モードへの分岐比を表\ref{tab: Mu_mode}にまとめる。主な崩壊モードは、ミシェル崩壊と呼ばれる$\mu$が$\gamma$を伴わず$\nu$を伴って$e$へと崩壊するモードである。
+
+\begin{table}[h]
+ \centering
+  \begin{tabular}{cc}
+   \hline
+   質量 & $105.6583745 \pm 0.0000024 \ {\rm MeV}$ \\
+   寿命 & $(2.1969811 \pm 0.0000022) \times 10^{-6} \ {\rm s}$ \\ 
+   異常磁気モーメント & $(11659209 \pm 6) \times 10^{-10} $ \\
+   電気双極子モーメント & $< 1.8 \times 10^{-19} e \ {\rm cm} \; (95\% \; {\rm C.L.})$ \\
+   \hline
+  \end{tabular}
+ \caption{ミューオンの基本性質 \cite{muon}}
+\end{table}
+\label{tab: Mu_prop}
+
+\begin{table}[h]
+ \centering
+  \begin{tabular}{lccc}
+   \hline
+   崩壊モード & 分岐比(測定値) & 信頼区間 & 備考\\
+   \hline \hline
+   $\mu^+ \to e^+\nu_e\bar{\nu}_{\mu}$ & $\sim 100 \%$ & \ & \ \\
+   $\mu^+ \to e^+\nu_e\bar{\nu}_{\mu}\gamma$ & $(6.0 \pm 0.5) \times 10^{-8} $ & \ & $E_e > 45 \ {\rm MeV},\; E_\gamma > 40 \ {\rm MeV}$ \\
+   $\mu^+ \to e^+\nu_e\bar{\nu}_{\mu}e^+e^- $ & $(3.4 \pm 0.4) \times 10^{-5} $ & \ & \ \\
+   \hline
+   $\mu^+ \to e^+\gamma$ & $< 4.2 \times 10^{-13}$ & $90 \%$ & cLFV \\
+   $\mu^+ \to e^+e^-e^+$ & $< 1.0 \times 10^{-12} $ & 〃 & 〃 \\
+   $\mu^+ \to e^+2\gamma$ & $< 7.2 \times 10^{-11} $ & 〃 & 〃 \\
+   $\mu^+ \to e^+\bar{\nu}_e\nu_{\mu}$ & $< 1.2 \times 10^{-2} $ & 〃 & 〃 \\
+   \hline
+  \end{tabular}
+ \caption{ミューオンの崩壊モードと分岐比 \cite{muon}}
+\end{table}
+\label{tab: Mu_mode}
+
+\begin{comment}
+標準理論における荷電レプトンの相互作用ラグランジアンを書き下すと、
+\begin{align}
+\mathcal{L} = \ & e\bar{\ell}\gamma^{\mu}{\ell}A_{\mu} \nonumber \\
+& -  \frac{g}{\sqrt{2}}(\bar{\nu}_{\ell L}\gamma^{\mu}\ell_L W^+_{\mu} + h.c.) \ \ \ \ (+h.c.は前項のエルミート共役を足すことを意味する) \nonumber \\
+& -  \sqrt{g^2+g^{'2}} \{ \bar{\ell}_L\gamma^{\mu}(-\frac{1}{2}+{\rm sin}^2\theta_W)\ell_L + \bar{\ell}_R\gamma^{\mu}{\rm sin}^2\theta_W\ell_R\}Z_{\mu}
+- \frac{m_{\ell}}{v}\bar{\ell}\ell H
+\end{align}
+ここで、$\ell$は荷電レプトン、$m_{\ell}$はその質量、$g、g'$はそれぞれ標準模型のSU(2)、U(1)相互作用に対応する結合定数、$\theta_W$はワインバーグ角、$Z、W、H$はゲージボソンとヒッグス粒子である。
+\end{comment}
+
+
+
+標準理論においてcLFVは禁止されていると言える。ただしこれに必然性は無い。
+
+
 
 \section{標準理論を超える物理において}
+(・これまでの$\mu^+ \to e^+ \gamma$探索) \\
+(・他のcLFV探索) \\
+ミューオンのcLFVから新物理を探る大規模な実験は国内外で多く存在する。代表的なもので$\mu \to eN$ 転換を探索するMu2e実験(フェルミ研究所)、COMET実験(J-PARK)や、$\mu \to eee$ 崩壊を探索するMu3e実験(PSI)がある。いずれの過程も相互作用の数が$\mu \to e\gamma$崩壊より多いため、その相対分岐比は$\mu \to e\gamma$崩壊の100分の1以下であると予想されており、目標とする分岐比感度はMEG II実験よりも高い。
+
+(・他の新物理の手がかり) \\
+ミューオンの異常磁気能率からのずれ
+
 \section{実験における信号・背景事象}
 
-\chapter{MEG II 実験}
 
-\section{MEG 実験}
-\section{MEG II 実験}
-\subsection{MEG実験からのアップグレード}
-\subsection{ドリフトチェンバー (CDCH)}
-\subsection{陽電子タイミングカウンター (pTC)}
-\subsection{液体キセノンガンマ線検出器 (LXe)}
-\subsection{輻射崩壊検出器 (RDC)}
-\subsection{DAQ}
-\subsection{展望}
-
-
+\ifthenelse{\boolean{masterflag}}
+{  }{
+\begin{thebibliography}{99}
+\bibitem{muon} P.A. Zyla et al. Review of Particle Physics.  {\it Progress of Theoretical and Experimental Physics}, Volume 2020, Issue 8, August 2020, 083C01. \\
+doi: https://doi.org/10.1093/ptep/ptaa104
+\bibitem{particles_sm} CERN website. https://home.cern/science/physics/standard-model , cited 14th December 2020.
+\end{thebibliography}
+}
 
 \end{document}
