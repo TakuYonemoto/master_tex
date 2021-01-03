@@ -41,9 +41,9 @@
 \maketitle
 \chapter*{概要}
 
-標準模型を超える物理として注目されている$\mu^+ \to e^+\gamma$崩壊を世界最高感度で探索したMEG実験では、崩壊分岐比に上限値$\mathcal{B} (\mu^+ \to e^+\gamma) < 4.2 \times 10^{-13} (90\% \; {\rm C.L.})$を与えたが発見には至らなかった。実験における大きな問題点として、最大強度の$\mu^+$ビームに伴う多数の偶発的背景事象を分離することが出来ず、$\mu^+$ビームを低減し事象数を絞っていたことがあった。後継のMEG II実験では、最大強度の$\mu^+$ビームとそれに耐えうる高性能で新しいデザインの検出器を用いることで、分岐比感度$\mathcal{O}(10^{-14})$を目指している。 
+標準模型を超える物理の一つである$\mu^+ \to e^+\gamma$崩壊を世界最高感度で探索したMEG実験では、崩壊分岐比に上限値$\mathcal{B} (\mu^+ \to e^+\gamma) < 4.2 \times 10^{-13} (90\% \; {\rm C.L.})$を与えたが発見には至らなかった。実験における大きな問題点として、最大強度の$\mu^+$ビームに伴う多数の偶発的背景事象を分離することが出来ず、$\mu^+$ビームを低減し事象数を絞っていたことがあった。後継のMEG II実験では、最大強度の$\mu^+$ビームとそれに耐えうる高性能で新しいデザインの検出器を用いることで、$\mathcal{O}(10^{-14})$の分岐比感度を目指している。 
 
-偶発的背景事象を分離するためには、粒子の時間を高精度で測定する必要がある。MEG II実験におけるマルチピクセル陽電子タイミングカウンター(pixelated Timing Counter, pTC)は、ミューオン$\mu^+$の崩壊に伴って放出される陽電子$e^+$の時間を測定する検出器である。プラスチックシンチレータと読み出しのシリコン光検出器(SiPM)からなる小型シンチレーションカウンターを「ピクセル」と呼称し、512個のピクセルによって$e^+$の時間を精度良く測定する。１つの$e^+$が複数のピクセルを通過するように配置されており、複数回の測定により高い時間分解能($ < 40 \rm ps$)を実現している。本論文では、各ピクセルについての位置較正手法の開発、及びピクセルの位置のずれが時間分解能に与える影響の評価について述べる。 \\
+偶発的背景事象を分離するためには、粒子の時間を高精度で測定する必要がある。MEG II実験におけるマルチピクセル陽電子タイミングカウンター(pixelated Timing Counter, pTC)は、ミューオン$\mu^+$の崩壊に伴って放出される陽電子$e^+$の時間を測定する検出器である。プラスチックシンチレータと読み出しのシリコン光検出器(SiPM)からなる小型シンチレーションカウンターを「ピクセル」と呼称し、512個のピクセルによって$e^+$の時間を精度良く測定する。1個の$e^+$が複数のピクセルを通過するように配置されており、複数回の測定により$ 30 \rm ps$台の高い時間分解能を実現している。本論文では、各ピクセルについての位置較正手法の開発、及びピクセルの位置のずれが時間分解能に与える影響の評価について述べる。 \\
 
 ↓↓↓↓↓ \\
 ~~~~~~~   成果  ~~~~~~~~~\\ \\
@@ -69,11 +69,21 @@
 \section{ドリフトチェンバーとのマッチング}
 
 \begin{thebibliography}{99}
-\bibitem{MEG} A. M. Baldini et al., Search for the lepton flavour violating decay $\mu^+ \to e^+ \gamma$ with the full dataset of the MEG experiment. {\it Eur. Phys. J.}, C 76 (8) (2016) 434. \\ 
-doi: 10.1140/epjc/s10052-016-4271-x. 
-\bibitem{muon} P.A. Zyla et al. Review of Particle Physics.  {\it Progress of Theoretical and Experimental Physics}, Volume 2020, Issue 8, August 2020, 083C01. \\
-doi: https://doi.org/10.1093/ptep/ptaa104
-\bibitem{particles_sm} CERN website. https://home.cern/science/physics/standard-model , cited 14th December 2020.
+\bibitem{MEGII} A. M. Baldini et al., The design of the MEG II experiment. {\it Eur. Phys. J.}, C {\bf 78} (5), 380 (2018). \\ 
+doi: \href{https://doi.org/10.1140/epjc/s10052-018-5845-6}{10.1140/epjc/s10052-018-5845-6.}
+\bibitem{MEG} A. M. Baldini et al., Search for the lepton flavour violating decay $\mu^+ \to e^+ \gamma$ with the full dataset of the MEG experiment. {\it Eur. Phys. J.}, C {\bf 76} (8), 434 (2016). \\ 
+doi: \href{https://doi.org/10.1140/epjc/s10052-016-4271-x}{10.1140/epjc/s10052-016-4271-x.}
+\bibitem{particles_sm} CERN website. \url{https://home.cern/science/physics/standard-model} , cited on 14th Dec. 2020.
+\bibitem{nu_osc} Y. Fukuda et al., Evidence for oscillation of atmospheric neutrinos, {\it Phys. Rev. Lett.}, {\bf 81}, 1562-1567 (1998). 
+doi: \href{https://doi.org/10.1103/PhysRevLett.81.1562}{10.1103/PhysRevLett.81.1562}
+\bibitem{muon} P.A. Zyla et al., Review of Particle Physics.  {\it Prog. Theor. Exp. Phys.}, Volume 2020, Issue 8, August 2020, 083C01. \\
+doi: \href{https://doi.org/10.1093/ptep/ptaa104}{10.1093/ptep/ptaa104.}
+\bibitem{fermi_g2} T. Aoyama et al., The anomalous magnetic moment of the muon in the Standard Model, {\it Phys. Rept.}, {\bf 887}, 1-166 (2020). \\
+doi: \href{https://doi.org/10.1016/j.physrep.2020.07.006}{10.1016/j.physrep.2020.07.006}
+\bibitem{jparc_g2} KEK website. \url{https://g-2.kek.jp/portal/index.html}
+\bibitem{rare_lep} Y. Kuno, Rare lepton decays, {\it Prog. Part. Nucl. Phys.}, {\bf 82}, 1-20 (2015). \\
+doi: \href{https://doi.org/10.1016/j.ppnp.2015.01.003}{10.1016/j.ppnp.2015.01.003}
+\bibitem{np_strategy} European Strategy for Particle Physics Preparatory Group, Physics Briefing Book (2019). \href{http://arxiv.org/abs/1910.11775}{arXiv:1910.11775.} 
 \end{thebibliography}
 
 
