@@ -4,6 +4,10 @@
 \chapter{陽電子タイミングカウンターの位置較正}
 本章では、本研究の主題である陽電子タイミングカウンター(pixelated Timing Counter, pTC)の位置較正について、開発した手法と時間分解能に与える影響の評価を述べる。
 
+\section{背景}
+\subsection{pTCに残された二つの課題}
+MEG II実験において、pTCはドリフトチェンバー(CDCH)との陽電子の複合測定・解析により陽電子再構成を行う検出器である。図\ref{fig: pTC_CAD}に示されるような構造体が、ビーム上流側と下流側にターゲットを挟んで対となるように設置されるが、実験エリアにおける位置についてこれまでは検証されてこなかった。そのため、一つ目の課題として実験エリアにおけるpTCの構造体としての位置を測定し、CDCHとの位置関係を明確にするということがあった。
+
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=7cm]{images/USTC_overall.png}
@@ -12,27 +16,111 @@
 \end{center}
 \end{figure}
 
-\section{背景}
-MEG II実験において、pTCはドリフトチェンバー(CDCH)との陽電子の複合測定・解析により陽電子再構成を行う検出器である。図\ref{fig: pTC_CAD}に示されるような構造体が、ビーム上流側と下流側にターゲットを挟んで対となるように設置されるが、実験エリアにおける位置についてこれまでは検証されてこなかった。そのため、一つ目の課題として実験エリアにおけるグローバルな位置を測定し、CDCHとの位置関係を明確にするということがあった。
+加えて、複数のピクセルの位置が系統的にずれていた場合、それらは積み重なってpTCの時間再構成に影響してくる。よって、二つ目の課題として512個全てのピクセルに対する位置較正を行うことがあった。これは512個という対象の多さや、毎年のメンテナンスによるピクセルの交換なども考慮すると、ある程度体系化された手法の開発が求められた。
 
-加えて、複数ヒットによる時間測定を行うために、複数のピクセルの位置が系統的にずれていた場合、それは積み重なって時間再構成に影響してくる。よって、二つ目の課題として512個全てのピクセルに対し、各々の時間分解能を考慮し、時間測定に影響を及ぼさないような精度でのローカルな位置の較正を行うことがあった。
+\subsection{要求される精度}
+
+実験エリアにおける測量について、CDCHやターゲットからのPropagationから概算して、
+\begin{align}
+\sigma = 
+\end{align}
+の精度が必要となる。
+
+512個のピクセルに対する位置較正については、各々のピクセルの時間分解能が80-100 ps (4章) であったことを考慮し、陽電子を光速とみなせば、
+\begin{align}
+\sigma_{single\ pixel} \times c \sim 2.4 - 3 cm
+\end{align}
+により、2cm以下の精度で位置を測定出来ればいいことになる。手法に伴う不確かさを加味すれば、測定自体の精度は1cm以下が望ましい。
+
+\section{実験エリアにおける測量}
+一つ目の課題である実験エリアにおけるグローバルな位置較正のための測量について述べる。レーザートラッカーを用いてこれを行う。レーザートラッカーについての詳細は付録Aに示すが、
+
+
+加えて、この測量により、後述する3Dスキャンによる位置測定の結果をCAD上の設計値と比較することが可能となる。
+
 
 \section{3Dスキャンによる位置較正}
 本研究の要となる、3Dスキャナーを用いた位置構成について述べる。
 
 \subsection{3Dスキャンにおける測量}
 ・光学的な原理など
-\subsection{スキャンデータの解析}
+
+\subsection{試験測定}
+
+はじめ、図\ref{fig: first_scan}のように少数の予備ピクセルに対し試験的な3Dスキャンを行なった。これらのデータに対し解析やフィッティングを行い、後の512ピクセルの個々の位置を算出への応用を考えていた。
+
+\begin{figure}[h]
+    \begin{tabular}{cc}
+      %---- 最初の図 ---------------------------
+      \begin{minipage}[t]{0.45\hsize}
+        \centering
+        \includegraphics[keepaspectratio, scale=0.6]{images/first_threes.png}
+      \end{minipage} &
+      %---- 2番目の図 --------------------------
+      \begin{minipage}[t]{0.45\hsize}
+        \centering
+        \includegraphics[keepaspectratio, scale=0.6]{images/first_scan.png}
+      \end{minipage}
+      %---- 図はここまで ----------------------
+    \end{tabular}
+    \caption{少数のピクセルに対する試験的な3Dスキャン。左: 実際の写真、右: 3Dスキャンにより取得したデータ}
+    \label{fig: first_scan}
+  \end{figure}
+  
+\subsection{本測定}
+スキャンデータの概観として、図\ref{fig: US_scan}に3Dスキャナーにより上流側pTCに対し取得したデータ点群を描画したものを示す。
+
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=7cm]{images/US_scan.png}
 \caption{pTC(上流側)の3Dスキャンデータ}
+\label{fig: US_scan}
 \end{center}
 \end{figure}
-3Dスキャンにおける座標系での測定結果を、CAD上の設計値と比較するために、実験エリアにおける座標系に移す必要がある。
-\subsection{実験エリアにおける測量}
-ここで、一つ目の課題であった実験エリアにおけるグローバルな位置較正と、前節の3Dスキャンから得られた結果をCAD上の設計値と比較するために必要な、実験エリアにおける測量について述べる。
-\subsection{測量基準点 (reference point)}
+
+\subsection{スキャンデータの解析}
+
+  当初は、全データ点群から各ピクセルを切り分け、各々に対しピクセルを模した直方体によるフィッティングを行うことで位置を較正していくことを想定していた。しかし、いくつかのピクセルについて個別にデータ点を見てみると、それぞれの取得状況は図\ref{fig: good_bad}に示されるようにかなりの質の差があった。
+
+\begin{figure}[h]
+    \begin{tabular}{cc}
+      %---- 最初の図 ---------------------------
+      \begin{minipage}[t]{0.45\hsize}
+        \centering
+        \includegraphics[width=7cm]{images/good.png}
+      \end{minipage} &
+      %---- 2番目の図 --------------------------
+      \begin{minipage}[t]{0.45\hsize}
+        \centering
+        \includegraphics[width=7cm]{images/bad.png}
+      \end{minipage}
+      %---- 図はここまで ----------------------
+    \end{tabular}
+    \caption{}
+    \label{fig: good_badl}
+  \end{figure}
+
+よって、体系的な手法の開発が求められた。これは、将来のスキャンデータにも応用可能であり、開発する価値は高いと考えた。
+
+\begin{figure}[h]
+    \begin{tabular}{cc}
+      %---- 最初の図 ---------------------------
+      \begin{minipage}[t]{0.45\hsize}
+        \centering
+        \includegraphics[width=7cm]{images/pixel1.png}
+      \end{minipage} &
+      %---- 2番目の図 --------------------------
+      \begin{minipage}[t]{0.45\hsize}
+        \centering
+        \includegraphics[width=7cm]{images/pixel2.png}
+      \end{minipage}
+      %---- 図はここまで ----------------------
+    \end{tabular}
+    \caption{}
+    \label{fig: scan_pixel}
+  \end{figure}
+
+
 \subsection{結果}
 \subsection{考察}
 

@@ -3,13 +3,65 @@
 \begin{document}
 
 \chapter{MEG II 実験}
-\section{概要}
+\section{信号事象と背景事象}
+
+\subsection{信号事象}
+図\ref{fig: signal}に示すように、ミューオンの二体崩壊$\mu^+ \to e^+ \gamma$において放出される$e^+$と$\gamma$は、
+
+\begin{itemize}
+\item 放出が同時であること
+\item 放出が反対方向であること
+\item お互いのエネルギーが親粒子の$\mu^+$の半分52.8 MeVであること
+\end{itemize}
+
+という特徴がある。これら三つの条件から、$\mu^+ \to e^+ \gamma$崩壊を信号事象として選別することが可能となる。
+
+\begin{figure}[h]
+ \begin{center}
+  \includegraphics[width=4cm]{./images/signal.png}
+  \caption{$\mu^+ \to e^+ \gamma$崩壊の模式図}
+  \label{fig: signal}
+ \end{center}
+\end{figure}
+
+\subsection{背景事象}
+MEG II実験における背景事象は、物理的背景事象と偶発的背景事象の二種類がある(図\ref{fig: bg})。
+前者は、ミューオンの輻射崩壊($\mu^+ \to e^+\nu_e\bar{\nu}_{\mu}\gamma$)由来の$e^+$と$\gamma$によるものである。$\nu_e$、$\bar{\nu}_{\mu}$のエネルギーが小さい場合、これは二体崩壊に近い事象となってしまう。しかし\cite{phys_bg}によれば、そのような背景事象の分岐比は$e^+$と$\gamma$のエネルギー分解能から見積もられ、MEG II実験においてそれは$\mathcal{O}(10^{-15})$程度である。これは現在の探索感度において無視できる。
+
+\begin{figure}[h]
+    \begin{tabular}{cc}
+      %---- 最初の図 ---------------------------
+      \begin{minipage}[t]{0.45\hsize}
+        \raggedleft
+        \includegraphics[width=3.5cm]{images/phys_bg.png}
+      \end{minipage} &
+      %---- 2番目の図 --------------------------
+      \begin{minipage}[t]{0.45\hsize}
+        \raggedright
+        \includegraphics[width=3.5cm]{images/acc_bg.png}
+      \end{minipage}
+      %---- 図はここまで ----------------------
+    \end{tabular}
+    \caption{MEG II実験における二種類の背景事象。左: 物理的背景事象、右: 偶発的背景事象}
+    \label{fig: bg}
+\end{figure}
+
+後者は、主にミシェル崩壊由来の$e^+$と、輻射崩壊や電子-陽電子対消滅に由来する偶発的な$\gamma$が混ざってしまい、検出器の分解能の範囲で信号事象の条件を満たしてしまうものである。これは高レートのビーム下において前者よりも支配的な背景事象であり、このような事象が起こる回数を$N_{acc}$とすると、
+\begin{align}
+N_{acc} \propto (R_\mu)^2 \times (\Delta E_\gamma)^2 \times \Delta p_e \times (\Delta \theta_{e\gamma})^2 \times \Delta t_{e\gamma} \times T
+\end{align}
+と書ける。ここで、$R_\mu$はビーム強度、$E_\gamma$は$\gamma$のエネルギー、$p_e$は$e^+$の運動量、$\theta_{e\gamma}$は$e^+$と$\gamma$の開き角、$t_{e\gamma}$は$e^+$と$\gamma$の時間差、$T$は測定時間を表し、$\Delta$はそれぞれの測定分解能を表す。MEG II実験における探索感度向上において最も重要なことはビーム強度の最大化であるため、$N_{acc}$抑制に向けて各検出器には高い分解能が求められる。
+
+
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=7cm]{images/MEGII.jpg}
 \caption{MEG II実験における検出器の概観}
 \end{center}
 \end{figure}
+
+
+
 \section{陽電子タイミングカウンター (pTC)}
 \section{ドリフトチェンバー (CDCH)}
 \section{液体キセノンガンマ線検出器 (LXe)}

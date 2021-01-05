@@ -19,7 +19,7 @@
 \usepackage{setspace}
 \usepackage{ifthen}
 \usepackage{mathdesign}
-
+\usepackage{wrapfig}
 
 \newboolean{masterflag}
 \setboolean{masterflag}{false}
@@ -41,12 +41,9 @@
 \maketitle
 \chapter*{概要}
 
-標準模型を超える物理の一つである$\mu^+ \to e^+\gamma$崩壊を世界最高感度で探索したMEG実験では、崩壊分岐比に上限値$\mathcal{B} (\mu^+ \to e^+\gamma) < 4.2 \times 10^{-13} (90\% \; {\rm C.L.})$を与えたが発見には至らなかった。実験における大きな問題点として、最大強度の$\mu^+$ビームに伴う多数の偶発的背景事象を分離することが出来ず、$\mu^+$ビームを低減し事象数を絞っていたことがあった。後継のMEG II実験では、最大強度の$\mu^+$ビームとそれに耐えうる高性能で新しいデザインの検出器を用いることで、$\mathcal{O}(10^{-14})$の分岐比感度を目指している。 
+標準模型を超える物理の$\mu^+ \to e^+\gamma$崩壊を世界最高感度で探索したMEG実験では、崩壊分岐比に上限値$\mathcal{B} (\mu^+ \to e^+\gamma) < 4.2 \times 10^{-13} (90\% \; {\rm C.L.})$を与えたが発見には至らなかった。後継実験における改善策として、検出器の性能を向上させることで偶発的背景事象をより強力に抑制し、最大強度の$\mu^+$ビームを使用するというものがあった。MEG II実験では、$\mu^+$ビームの強度を最大化し、レート耐性と測定分解能を高めた新たなデザインの検出器を用いることで、$\mathcal{O}(10^{-14})$の分岐比感度での$\mu^+ \to e^+\gamma$探索を目指している。 
 
-偶発的背景事象を分離するためには、粒子の時間を高精度で測定する必要がある。MEG II実験におけるマルチピクセル陽電子タイミングカウンター(pixelated Timing Counter, pTC)は、ミューオン$\mu^+$の崩壊に伴って放出される陽電子$e^+$の時間を測定する検出器である。プラスチックシンチレータと読み出しのシリコン光検出器(SiPM)からなる小型シンチレーションカウンターを「ピクセル」と呼称し、512個のピクセルによって$e^+$の時間を精度良く測定する。1個の$e^+$が複数のピクセルを通過するように配置されており、複数回の測定により$ 30 \rm ps$台の高い時間分解能を実現している。本論文では、各ピクセルについての位置較正手法の開発、及びピクセルの位置のずれが時間分解能に与える影響の評価について述べる。 \\
-
-↓↓↓↓↓ \\
-~~~~~~~   成果  ~~~~~~~~~\\ \\
+偶発的背景事象削減のためには、粒子の時間をより高精度で測定する必要がある。MEG II実験のために新たに開発されたマルチピクセル陽電子タイミングカウンター(pixelated Timing Counter, pTC)は、ミューオン$\mu^+$の崩壊に伴って放出される陽電子$e^+$の時間検出器である。「ピクセル」と呼称される、プラスチックシンチレータと読み出しのシリコン光検出器(SiPM)からなる小型シンチレーションカウンター512個により、$e^+$の時間を精度良く測定する。1個の$e^+$が複数のピクセルを通過するように配置されており、平均9個のピクセルによる測定は$ 30 \rm ps$台の高い時間分解能を実現する。ここで、複数のピクセルによる測定を正しく行うためには各ピクセルの位置を正確に知っている必要があるのだが、512個という数の多さから今まで効果的な位置較正手法が開発されてこなかった。本論文では、各ピクセルについての体系的な位置較正手法の開発、及びピクセルの位置のずれが時間分解能に与える影響の評価について述べる。 \\
 
 \setcounter{tocdepth}{2}
 \tableofcontents
@@ -63,9 +60,8 @@
 \part{付録}
 \appendix
 \chapter{3D測量機器について}
+\subsection{測量基準点 (reference point)}
 \chapter{軌跡再構成について}
-\section{カルマンフィルター}
-\section{クラスタリング}
 \section{ドリフトチェンバーとのマッチング}
 
 \begin{thebibliography}{99}
@@ -73,6 +69,7 @@
 doi: \href{https://doi.org/10.1140/epjc/s10052-018-5845-6}{10.1140/epjc/s10052-018-5845-6.}
 \bibitem{MEG} A. M. Baldini et al., Search for the lepton flavour violating decay $\mu^+ \to e^+ \gamma$ with the full dataset of the MEG experiment. {\it Eur. Phys. J.}, C {\bf 76} (8), 434 (2016). \\ 
 doi: \href{https://doi.org/10.1140/epjc/s10052-016-4271-x}{10.1140/epjc/s10052-016-4271-x.}
+
 \bibitem{particles_sm} CERN website. \url{https://home.cern/science/physics/standard-model} , cited on 14th Dec. 2020.
 \bibitem{nu_osc} Y. Fukuda et al., Evidence for oscillation of atmospheric neutrinos, {\it Phys. Rev. Lett.}, {\bf 81}, 1562-1567 (1998). 
 doi: \href{https://doi.org/10.1103/PhysRevLett.81.1562}{10.1103/PhysRevLett.81.1562}
@@ -81,9 +78,20 @@ doi: \href{https://doi.org/10.1093/ptep/ptaa104}{10.1093/ptep/ptaa104.}
 \bibitem{fermi_g2} T. Aoyama et al., The anomalous magnetic moment of the muon in the Standard Model, {\it Phys. Rept.}, {\bf 887}, 1-166 (2020). \\
 doi: \href{https://doi.org/10.1016/j.physrep.2020.07.006}{10.1016/j.physrep.2020.07.006}
 \bibitem{jparc_g2} KEK website. \url{https://g-2.kek.jp/portal/index.html}
+\bibitem{lag_eff} L. Calibbi, G. Signorelli, Charged Lepton Flavour Violation: An Experimental and Theoretical Introduction. {\it Riv. Nuovo Cimento}, {\bf 41} (2017).
+doi: \href{https://doi.org/10.1393/ncr/i2018-10144-0}{10.1393/ncr/i2018-10144-0}
 \bibitem{rare_lep} Y. Kuno, Rare lepton decays, {\it Prog. Part. Nucl. Phys.}, {\bf 82}, 1-20 (2015). \\
 doi: \href{https://doi.org/10.1016/j.ppnp.2015.01.003}{10.1016/j.ppnp.2015.01.003}
+
+
+\bibitem{phys_bg} Y. Kuno and Y. Okada, Muon decay and physics beyond the standard model, {\it Rev. Mod. Phys.}, {\bf 73}, 151 (2001). \\
+doi: \href{http://dx.doi.org/10.1103/RevModPhys.73.151}{10.1103/RevModPhys.73.151}
+
 \bibitem{np_strategy} European Strategy for Particle Physics Preparatory Group, Physics Briefing Book (2019). \href{http://arxiv.org/abs/1910.11775}{arXiv:1910.11775.} 
+
+\bibitem{laser_tracker} Hexagon Manufacturing Intelligence website. \url{https://www.hexagonmi.com/products/laser-tracker-systems/leica-absolute-tracker-at960}
+\bibitem{laser_track_principle} J. E. Muelaner, P. G. Maropoulos, Large scale metrology in aerospace assembly. In {\it the 5th DET}, 22-24, 2008.
+\bibitem{FARO} FARO Technologies, Inc. website. \url{https://www.faro.com/products/3d-manufacturing/faroarm/}
 \end{thebibliography}
 
 

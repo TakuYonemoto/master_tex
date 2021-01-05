@@ -2,12 +2,12 @@
 %\setcounter[chapter]{2}
 \begin{document}
 
-\chapter{$\mu^+ \to e^+ \gamma$ 崩壊}
-本章では、荷電レプトンフレーバー保存の破れ (charged Lepton Flavor Violation, cLFV) の１つである$\mu^+ \to e^+ \gamma$ 崩壊探索のモチベーションや現状について述べる。標準模型で禁止されているこの崩壊過程は、超対称性模型を中心とした新物理において実験的に観測可能であると予言されている。
+\chapter{$\mu^+ \to e^+ \gamma$崩壊探索の理論的背景}
+本章では、標準理論で禁止されている荷電レプトンフレーバー保存の破れ (charged Lepton Flavor Violation, cLFV) の１つである$\mu^+ \to e^+ \gamma$ 崩壊の観測可能性や、新物理の探索について述べる。
 
 \section{ミューオンについて}
 \subsection{基本性質}
-ミューオンの基本性質を表\ref{tab: Mu_prop}にまとめる。質量が大きくなく、生成が容易であることが利点である。\\
+ミューオンの基本性質を表\ref{tab: Mu_prop}にまとめる。質量が大きくなく、生成が容易であることが利点である。MEG II実験においてはミューオニウム原子の生成を防ぐため、$\mu^-$ではなく$\mu^+$を用いる。
 
 \begin{table}[h]
  \centering
@@ -23,14 +23,15 @@
   \end{tabular}
 \end{table}
 
-異常磁気能率についてのみ、フェルミ研究所による測定の最新結果を記載した。今後さらなる議論や、J-PARCにおける再検証が予定されている\cite{jparc_g2}。
+異常磁気能率についてのみ、フェルミ研究所による測定の最新結果を記載した。この理論値と測定値の乖離は新物理の存在を期待させるものであり、今後さらなる議論や、J-PARCにおける再検証が予定されている\cite{jparc_g2}。
 
 \subsection{崩壊モード}
-各崩壊モードへの分岐比の測定値を表\ref{tab: Mu_mode}に示す。ただし、ミシェル崩壊と輻射崩壊は明確に区分して測定することが出来ないため、輻射崩壊については$E_e > 45$ MeV、$E_\gamma > 40$ MeVのものを示している。また、cLFV過程については分岐比の上限値を90\%信頼区間で示している。\\
+各崩壊モードへの分岐比の測定値を表\ref{tab: Mu_mode}に示す。ただし、ミシェル崩壊と輻射崩壊は明確に区分して測定することが出来ないため、輻射崩壊については$E_e > 45$ MeV、$E_\gamma > 40$ MeVのものを示している。また、cLFV過程については分岐比の上限値を90\%信頼区間で示している。
 
 \begin{table}[h]
  \centering
  \caption{ミューオンの崩壊モードと分岐比\cite{muon}。}
+ \label{tab: Mu_mode}
   \begin{tabular}{lccc}
    \hline
    崩壊モード & 分岐比(測定値)\\
@@ -46,13 +47,11 @@
    \hline
   \end{tabular}
 \end{table}
-\label{tab: Mu_mode}
 
-ミューオン崩壊のほぼ100\%を占めるミシェル崩壊($\mu^+ \to e^+\nu_e\bar{\nu}_{\mu}$)により生成される陽電子は、陽電子タイミングカウンターの運用に大きく関わっている (4章)。%$\mu^+ \to e^+\gamma$以外のcLFV過程探索については、$\mu \to eee$崩壊を探索するMu3e実験(PSI)や、$\mu N \to eN$転換を探索するMu2e実験(フェルミ研究所)、COMET実験(J-PARK)が行われる予定である。
+ミシェル崩壊($\mu^+ \to e^+\nu_e\bar{\nu}_{\mu}$)は、ミューオン崩壊のほぼ100\%を占めるため、他のミューオン崩壊の分岐比はミシェル崩壊の崩壊率との比で計算される。また、ミシェル崩壊により生成される陽電子は、陽電子タイミングカウンターの運用に大きく関わっている (4章)。
 
-\section{標準模型}
-\subsection{レプトンフレーバー保存}
-標準模型 (Standard Model, SM) は、$100 \rm{GeV}$程度までのエネルギー領域における多くの実験的事実と整合する、現代素粒子物理学の理論的な枠組みとなるようなモデルである。図\ref{fig: sm_par}に示す標準模型における18の素粒子は、2012年にヒッグス粒子が発見されたことでその全てが発見されている。図の左側に示される12の粒子は、フェルミオンと呼ばれる物質を構成する素粒子である。その中で、強い相互作用に関する粒子はクォーク、そうでない粒子はレプトンと呼ばれる。標準模型において、クォークの世代間混合は許されており、その存在が実験的にも確認されている一方、レプトンの世代間混合は許されていない。これをレプトンフレーバー保存と呼ぶ。
+\section{標準模型とニュートリノ振動}
+標準模型 (Standard Model, SM) は、$100 \rm{GeV}$程度までのエネルギー領域における多くの実験的事実と整合する、現代素粒子物理学の理論的な枠組みとなるようなモデルである。図\ref{fig: sm_par}に示す標準模型における18の素粒子は、2012年にヒッグス粒子が発見されたことでその全てが発見されている。図の左側に示される12の粒子は、フェルミオンと呼ばれる物質を構成する素粒子である。その中で、強い相互作用の影響を受ける粒子はクォーク、そうでない粒子はレプトンと呼ばれる。標準模型において、クォークの世代間混合は許されており、その存在が実験的にも確認されている一方、レプトンの世代間混合は許されていない。これをレプトンフレーバー保存と呼ぶ。
 
 \begin{figure}[h]
 \begin{center}
@@ -72,14 +71,13 @@
 %\end{align}
 %ここで、$\ell$は荷電レプトン、$m_{\ell}$はその質量、$g、g'$はそれぞれ標準模型のSU(2)、U(1)相互作用に対応する結合定数、$\theta_W$はワインバーグ角、$Z、W、H$はゲージボソンとヒッグス粒子である。
 
-\subsection{中性レプトンフレーバー保存の破れ}
-近年、ニュートリノ振動が発見され\cite{nu_osc}、中性レプトンにおいてはフレーバー保存が破られることが分かった。これによる標準模型の素朴な拡張として、ニュートリノ振動$\bar{\nu}_{\mu} \to \bar{\nu}_{e}$を介したcLFV過程$\mu^+ \to e^+ \gamma$について、図\ref{fig: naive_ext}のようなファインマンダイアグラムを考えることが出来る。しかしこの過程は、ニュートリノの質量が非常に小さいことから強力な制限を受け、分岐比は
+近年、ニュートリノ振動が発見され\cite{nu_osc}、中性レプトンにおいてはフレーバー保存が破られることが分かった。これによる標準模型の素朴な拡張として、ニュートリノ振動$\bar{\nu}_{\mu} \to \bar{\nu}_{e}$を介したcLFV過程$\mu^+ \to e^+ \gamma$について、図\ref{fig: naive_ext}のようなファインマンダイアグラムを考えることが出来る。しかしこの過程はニュートリノの質量が非常に小さいことから強力な制限を受けるため、その分岐比は、
 
 \begin{align}
-\mathcal{B}(\mu^+ \to e^+ \gamma) = \frac{3\alpha}{32\pi} \left|\sum_{i=2,3}U^*_{\mu i}U_{ei}\frac{\Delta m^2_{i1}}{M_W}\right|^2 < 10^{-50}
+\mathcal{B}(\mu^+ \to e^+ \gamma) \simeq \frac{\Gamma(\mu^+ \to e^+ \gamma)}{\Gamma(\mu^+ \to e^+\nu_e\bar{\nu}_{\mu})} = \frac{3\alpha}{32\pi} \left|\sum_{i=2,3}U^*_{\mu i}U_{ei}\frac{\Delta m^2_{i1}}{M_W}\right|^2 < 10^{-50}
 \end{align}
 
-\noindent となる\cite{rare_lep}。ここで、$\alpha$は微細構造定数、$U_{ij}$はニュートリノ混合行列(PMNS行列)のフレーバー$i$、質量固有状態$j$に対応する要素、$\Delta m^2_{ij}$はニュートリノの質量固有状態$i$、$j$の質量差、$M_W$はWボソンの質量を表す。この非常に小さな分岐比は、標準模型にニュートリノの質量を組み込んだ素朴な拡張において、$\mu^+ \to e^+ \gamma$崩壊は現実的に観測不可能であることを意味する。
+\noindent と見積もられる\cite{rare_lep}。ここで、$\alpha$は微細構造定数、$U_{ij}$はニュートリノ混合行列(PMNS行列)のフレーバー$i$、質量固有状態$j$に対応する要素、$\Delta m^2_{ij}$はニュートリノの質量固有状態$i$、$j$の質量差、$M_W$はWボソンの質量を表す。この非常に小さな分岐比が意味することは、標準模型にニュートリノ振動を組み込んだモデルのままでは、$\mu^+ \to e^+ \gamma$崩壊は現実的に観測不可能ということである。よって、もし仮に$\mu^+ \to e^+ \gamma$崩壊が観測されたなら、それは新物理の証拠であると言える。
 
 \begin{figure}[h]
 \begin{center}
@@ -91,35 +89,22 @@
 
 \section{標準理論を超える物理}
 
-新物理のスケールを$\Lambda$とすると、有効ラグランジアンは、
+新物理のエネルギースケールを$\Lambda$とすると、有効ラグランジアンは、
 \begin{align}
 \mathcal{L}_{eff} = \mathcal{L}_{SM} + \sum_{n \geq 5} \sum_{m} \frac{1}{\Lambda^{n-4}} C^{(n)}_m \mathcal{O}^{(n)}_m
 \end{align}
-\noindent の形で書ける\cite{lag_eff}。ここで、$\mathcal{L}_{SM}$は標準模型におけるラグランジアン、$n$は次元、$C^{(n)}_m$は無次元の係数、$\mathcal{O}^{(n)}_m$は繰り込み不可能な$n$次元のオペレータを表す。$n=5$ではcLFVに対しループレベルでの寄与しか得られず、$n \geq 7$ではさらに$\frac{1}{\Lambda}$がかかるのでここでは考えない。$n=6$で$\mu^+ \to e^+ \gamma$に寄与する双極子型のオペレータのみを考え、これから得られる崩壊率を計算すると、
+\noindent の形で書ける\cite{lag_eff}。ここで、$\mathcal{L}_{SM}$は標準模型におけるラグランジアン、$n$は次元、$C^{(n)}_m$は無次元の結合定数、$\mathcal{O}^{(n)}_m$は繰り込み不可能な$n$次元のオペレータを表す。$n=5$ではcLFVに対しループレベルでの寄与しか得られず、$n \geq 7$ではさらに$\frac{1}{\Lambda}$がかかるのでここでは考えない。$n=6$で二体崩壊$\mu^+ \to e^+ \gamma$に寄与する双極子型のオペレータのみを考え、これから得られる崩壊率と分岐比を計算すると、
 \begin{align}
-\Gamma(\mu^+ \to e^+ \gamma) = \frac{m^3_\mu v^2}{8\pi \Lambda^4} (|C^{e\mu}_{e\gamma}|^2 + |C^{\mu e}_{e \gamma}|^2)
+\Gamma(\mu^+ \to e^+ \gamma) &= \frac{m^3_\mu v^2}{16\pi G_F \Lambda^4} (|C^{e\mu}_{e\gamma}|^2 + |C^{\mu e}_{e \gamma}|^2) \\
+\mathcal{B}(\mu^+ \to e^+ \gamma) \simeq \frac{\Gamma(\mu^+ \to e^+ \gamma)}{\Gamma(\mu^+ \to e^+\nu_e\bar{\nu}_{\mu})} &= \frac{12 \pi^2}{m^2_{\mu} G^3_F \Lambda^4}(|C^{e\mu}_{e\gamma}|^2 + |C^{\mu e}_{e \gamma}|^2) \nonumber \\
+&= 10^{-14} \times \left(\frac{1 {\rm TeV}}{\Lambda}\right)^4 \times (2.7 \times 10^{10})^2(|C^{e\mu}_{e\gamma}|^2 + |C^{\mu e}_{e \gamma}|^2 )
 \end{align}
-\noindent ここで、$m_\mu$はミューオンの質量、$v$はヒッグス場の真空期待値を表す。この式から、ニュートリノ振動のみを考慮した標準模型における分岐比より、小さなエネルギースケールまたは大きな係数を伴って$\mu^+ \to e^+ \gamma$崩壊が起こることが示される。
 
-\section{実験における信号・背景事象}
+\noindent ここで、$m_\mu$はミューオンの質量、$G_F$はフェルミ結合定数を表し、$\Gamma(\mu^+ \to e^+\nu_e\bar{\nu}_{\mu}) = m^5_{\mu} G^2_F / 192 \pi^3$を用いた。これは、分岐比感度$\mathcal{O}(10^{-14})$での$\mu^+ \to e^+ \gamma$探索が、例えばTeVスケールで結合定数が$\mathcal{O}(10^{-10})$の新物理に感度があることを意味する。
 
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=6cm]{./images/signal.png}
-\caption{$\mu^+ \to e^+ \gamma$崩壊}
-\label{fig: signal}
-\end{center}
-\end{figure}
+\section{新物理探索における展望}
+図\ref{fig: np_scale}に示すように、$\mu^+ \to e^+ \gamma$に代表されるミューオンのcLFVはPeVスケールに及ぶ物理にまで感度があるため、加速器における新粒子生成を上回るような新物理探索となり得る。MEG II実験は、$\mu \to eee$崩壊を探索するMu3e実験(PSI)や、$\mu N \to eN$転換を探索するMu2e実験(フェルミ研究所)、COMET実験(J-PARK)に先駆けてデータ取得を開始する。
 
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=10cm]{./images/bg.png}
-\caption{主要な背景事象}
-\label{fig: bgl}
-\end{center}
-\end{figure}
-
-\section{展望}
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=13cm]{./images/scale.png}
@@ -127,6 +112,7 @@
 \label{fig: np_scale}
 \end{center}
 \end{figure}
+
 
 
 \ifthenelse{\boolean{masterflag}}
