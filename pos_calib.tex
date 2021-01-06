@@ -6,48 +6,195 @@
 
 \section{背景}
 \subsection{pTCに残された二つの課題}
-MEG II実験において、pTCはドリフトチェンバー(CDCH)との陽電子の複合測定・解析により陽電子再構成を行う検出器である。図\ref{fig: pTC_CAD}に示されるような構造体が、ビーム上流側と下流側にターゲットを挟んで対となるように設置されるが、実験エリアにおける位置についてこれまでは検証されてこなかった。そのため、一つ目の課題として実験エリアにおけるpTCの構造体としての位置を測定し、CDCHとの位置関係を明確にするということがあった。
+MEG II実験において、pTCはドリフトチェンバー(CDCH)との陽電子の複合測定・解析により陽電子再構成を行う検出器である。図\ref{fig: pTC_CAD}に示されるような構造体が、図\ref{fig: double_pTC}のようにビーム上流側と下流側にターゲットを挟んで対となるように設置されるが、実験エリアにおける位置についてこれまでは検証されてこなかった。そのため、一つ目の課題として実験エリアにおけるpTCの構造体としての位置を測定し、ターゲットとの位置関係を明確にするということがあった。
 
 \begin{figure}[h]
-\begin{center}
-\includegraphics[width=7cm]{images/USTC_overall.png}
-\caption{CADにおけるpTC(上流側)の概観}
-\label{fig: pTC_CAD}
-\end{center}
-\end{figure}
-
+    \begin{tabular}{cc}
+      %---- 最初の図 ---------------------------
+      \begin{minipage}[t]{0.45\hsize}
+        \centering
+        \includegraphics[height=5cm, width=5cm]{images/USTC_overall.png}
+        \caption{CADにおける上流側pTCの概観}
+        \label{fig: pTC_CAD}
+      \end{minipage} &
+      %---- 2番目の図 --------------------------
+      \begin{minipage}[t]{0.45\hsize}
+        \centering
+        \includegraphics[height=3cm, width=8cm]{images/track.png}
+        \caption{上流と下流で対となるpTC}
+        \label{fig: double_pTC}
+      \end{minipage}
+      %---- 図はここまで ----------------------
+    \end{tabular}
+  \end{figure}
 加えて、複数のピクセルの位置が系統的にずれていた場合、それらは積み重なってpTCの時間再構成に影響してくる。よって、二つ目の課題として512個全てのピクセルに対する位置較正を行うことがあった。これは512個という対象の多さや、毎年のメンテナンスによるピクセルの交換なども考慮すると、ある程度体系化された手法の開発が求められた。
 
 \subsection{要求される精度}
-
-実験エリアにおける測量について、CDCHやターゲットからのPropagationから概算して、
+実験エリアにおけるpTCの測量を考える際、重要な指標となるのはターゲットからの伝搬長、すなわちCDCHにおける飛跡長である。陽電子が入射角$45^\circ$で螺旋運動していることを考慮すれば、$z$-$\phi$面における測量の精度$\sigma_{z,\phi}^{(area)}$が飛跡長$l_{e^+}$に対し与える影響は、
 \begin{align}
-\sigma = 
+\frac{\sigma_{l_{e^+}}}{c}
+= \sqrt{\left(\frac{\sigma_z^{(area)}}{c/\sqrt{2}}\right)^2 + \left(\frac{r\sigma_{\phi}^{(area)}}{c/\sqrt{2}}\right)^2 + \left(\frac{\sigma_{l_{e^+}}^{CDCH}}{c}\right)^2} 
 \end{align}
-の精度が必要となる。
 
-512個のピクセルに対する位置較正については、各々のピクセルの時間分解能が80-100 ps (4章) であったことを考慮し、陽電子を光速とみなせば、
+と書ける。ここで、CDCHによる陽電子軌跡の不確かさ$\sigma_{l_{e^+}}^{CDCH}/c \sim 10 \rm ps$への寄与を10\%程度($\sim$1ps)まで抑えたいので、
+
 \begin{align}
-\sigma_{single\ pixel} \times c \sim 2.4 - 3 cm
+\sqrt{\left(\frac{\sigma_z^{(area)}}{c/\sqrt{2}}\right)^2 + \left(\frac{r\sigma_{\phi}^{(area)}}{c/\sqrt{2}}\right)^2 + (10 \ {\rm ps})^2} &< (10 + 1) \ {\rm ps} \nonumber \\
+\therefore \ \left(\frac{y}{r}{\sigma_x^{(area)}}\right)^2 + \left(\frac{x}{r}{\sigma_y^{(area)}}\right)^2 + {\sigma_z^{(area)}}^2 &\lesssim 9.5 \ {\rm mm}^2
 \end{align}
-により、2cm以下の精度で位置を測定出来ればいいことになる。手法に伴う不確かさを加味すれば、測定自体の精度は1cm以下が望ましい。
+
+\noindent を、実験エリアにおける測量の目標精度とする。$\left({r\sigma_{\phi}}\right)^2 = \left(\frac{y}{r}\sigma_x \right)^2 + \left(\frac{x}{r} \sigma_y\right)^2$を用いた。特に、$\left(\frac{y}{r}\sigma_x \right)^2 + \left(\frac{x}{r} \sigma_y\right)^2 < \sigma_x^2 + \sigma_y^2$より、
+\begin{align}
+{\sigma_x^{(area)}}^2 + {\sigma_y^{(area)}}^2 + {\sigma_z^{(area)}}^2  \lesssim 9.5 \ {\rm mm}^2
+\end{align}
+は(5.2)の十分条件となっている。
+
+512個のピクセルに対する位置較正については、単一のピクセルの時間分解能$\sigma_{t_{e^+}}^{single} \sim 80$ ps (4章) に及ぼす影響を10\%程度まで抑えることを考える。位置較正の精度を$\sigma_{z,\phi}^{(pixel)}$とすれば、上と同様にして、
+\begin{align}
+\left(\frac{y}{r}{\sigma_x^{(pixel)}}\right)^2 + \left(\frac{x}{r}{\sigma_y^{(pixel)}}\right)^2 + {\sigma_z^{(pixel)}}^2 &\lesssim 76 \  {\rm mm}^2
+\end{align}
+
+\noindent が、ピクセルに対する位置較正の目標精度となる。こちらについても同様に、
+\begin{align}
+{\sigma_x^{(pixel)}}^2 + {\sigma_y^{(pixel)}}^2 + {\sigma_z^{(pixel)}}^2 \lesssim 76 \ {\rm mm}^2
+\end{align}
+が十分条件である。
+
 
 \section{実験エリアにおける測量}
-一つ目の課題である実験エリアにおけるグローバルな位置較正のための測量について述べる。レーザートラッカーを用いてこれを行う。レーザートラッカーについての詳細は付録Aに示すが、
+\subsection{原理}
+一つ目の課題である実験エリアにおける測量について述べる。用いるのは、レーザートラッカーと呼ばれる3次元測量装置である(図\ref{fig: lasertracker})。検出器に設置された反射鏡に向けて光を照射し、反射光の飛行時間による絶対距離測定とマイケルソン干渉計の原理(図\ref{fig: laser_principle})を用いた距離測定の両方を組み合わせることで、反射鏡の位置を精度良く捉える。表\ref{tab: laser_tracker}に、今回用いた、PSIが所有するLeica Geosystems社のレーザートラッカーについて性能を示す。
 
+\begin{figure}[h]
+    \begin{tabular}{cc}
+      %---- 最初の図 ---------------------------
+      \begin{minipage}[t]{0.45\hsize}
+        \centering
+        \includegraphics[height=7cm, width=5cm]{images/lasertracker.png}
+        \caption{レーザートラッカー (Leica Absolute Tracker AT960)}
+        \label{fig: lasertracker}
+      \end{minipage} &
+      %---- 2番目の図 --------------------------
+      \begin{minipage}[t]{0.45\hsize}
+        \centering
+        \includegraphics[width=7cm]{images/laser_track_principle.png}
+        \caption{マイケルソン干渉計の原理}
+        \label{fig: laser_principle}
+      \end{minipage}
+      %---- 図はここまで ----------------------
+    \end{tabular}
+\end{figure}
 
-加えて、この測量により、後述する3Dスキャンによる位置測定の結果をCAD上の設計値と比較することが可能となる。
+\begin{table}[h]
+ \centering
+ \caption{レーザートラッカーの性能\cite{laser_tracker}}
+ \label{tab: lasertracker_spec}
+  \begin{tabular}{lccc}
+   \hline
+   モデル & AT960 \\
+   測定精度 & $\pm \ 15 \ \mu m + 6 \ \mu m / m$ \\
+   データ取得レート & 1000 points/sec \\
+   \hline
+  \end{tabular}
+\end{table}
 
+\subsection{2018-2020年の測定}
+pTCのインストール状況に合わせ、2018年は下流側pTCに、2019年及び2020年は上流側pTCに対してMEG II実験における他の検出器と共に測定を行った。得られた結果を図\ref{fig: area_survey}に示す。2019年はCDCHに接続されるケーブルが大量に増え、11個設置するはずだったPSI所有の反射鏡(図\ref{fig: SMR})の内4個しか設置することが出来ず、十分な数を測定出来なかった。そこで我々は、2020年以降の測定のために備え付け用の反射鏡(図\ref{fig: corner1})を購入し、3個を上流側に設置した。そうしたこともあって、2020年の測定では8個の反射鏡に対し測定を行うことが出来た。
+
+\begin{figure}[h]
+    \begin{tabular}{cc}
+      %---- 最初の図 ---------------------------
+      \begin{minipage}[t]{0.45\hsize}
+        \centering
+        \includegraphics[height=7cm, width=6cm]{images/2018survey.png}
+        \caption*{(a)}
+      \end{minipage} &
+      %---- 2番目の図 --------------------------
+      \begin{minipage}[t]{0.45\hsize}
+        \centering
+        \includegraphics[height=7cm, width=7cm]{images/tab_2018.png}
+        \caption*{(b)}
+      \end{minipage}
+      %---- 図はここまで ----------------------
+    \end{tabular}
+\begin{center}
+\includegraphics[width=7cm]{images/2019survey.png}
+\caption*{(c)}
+\end{center}
+    \begin{tabular}{cc}
+      %---- 最初の図 ---------------------------
+      \begin{minipage}[t]{0.45\hsize}
+        \centering
+        \includegraphics[height=7cm, width=6cm]{images/2020survey.png}
+        \caption*{(d)}
+      \end{minipage} &
+      %---- 2番目の図 --------------------------
+      \begin{minipage}[t]{0.45\hsize}
+        \centering
+        \includegraphics[height=7cm, width=7cm]{images/tab_2020.png}
+        \caption*{(e)}
+      \end{minipage}
+      %---- 図はここまで ----------------------
+    \end{tabular}
+    \caption{2018-2020年における実験エリアでの位置測量。(a) 2018年(下流側pTC) (c) 2019年(上流側pTC) (d) 2020年(上流側pTC)にそれぞれ対応する。このうち2018年と2020年については十分な数のデータ点があり、(b),(d)はそれぞれの実験エリア外での事前測定との比較である。}
+    \label{fig: area_survey}
+\end{figure}
+
+\begin{figure}[h]
+    \begin{tabular}{cc}
+      %---- 最初の図 ---------------------------
+      \begin{minipage}[t]{0.45\hsize}
+        \centering
+        \includegraphics[height=5.5cm, width=4cm]{images/CornerCube.jpg}
+        \caption{PSI所有の反射鏡、Spherical mounted Retro-reflector (SMR)}
+         \label{fig: SMR}
+      \end{minipage} &
+      %---- 2番目の図 --------------------------
+      \begin{minipage}[t]{0.45\hsize}
+        \centering
+        \includegraphics[height=5.5cm, width=9cm]{images/corner1.JPG}
+        \caption{購入したニューポート社製の反射鏡、\cite{newport}}
+         \label{fig: corner1}
+      \end{minipage}
+      %---- 図はここまで ----------------------
+    \end{tabular}
+\end{figure}
+
+\subsection{評価}
+エリア外での事前測定との相対位置のズレは、pTC構造体の変形の影響も受けるが、この位置測定の手法による不確かさを内包していると考える。
+ここで、図\ref{fig: area_survey}(b),(d)より、上流側・下流側pTCに対し取得した全データ点で(5.3)が成立しているため、エリアでの位置測定に要求される精度は十分に達成していると言える。
+
+\clearpage
 
 \section{3Dスキャンによる位置較正}
 本研究の要となる、3Dスキャナーを用いた位置構成について述べる。
 
 \subsection{3Dスキャンにおける測量}
-・光学的な原理など
+3Dスキャナーは、三角測距方式のレーザー測定器である。物体にレーザーを照射し、物体の位置によって反射光の位相が異なることを利用して物体の3次元位置を精度良く測定する器具である。使用したFARO社のEdge ScanArm HD(図\ref{fig: FARO})について、その性能を表\ref{tab: FARO_spec}に記す。
+\begin{figure}[h]
+  \centering
+  \includegraphics[keepaspectratio, scale=0.7]{images/FARO.png}
+  \caption{使用した3Dスキャナー (FARO Edge ScanArm HD)}
+  \label{fig: FARO}
+\end{figure}
+
+\begin{table}[h]
+ \centering
+ \caption{3Dスキャナーの性能 \cite{FARO}}
+ \label{tab: FARO_spec}
+  \begin{tabular}{lccc}
+   \hline
+   モデル & FARO Edge ScanArm HD \\
+   測定精度 & $\pm \ 25 \ \mu m$ \\
+   データ取得レート & 560000 points/sec \\
+   \hline
+  \end{tabular}
+\end{table}
+
 
 \subsection{試験測定}
 
-はじめ、図\ref{fig: first_scan}のように少数の予備ピクセルに対し試験的な3Dスキャンを行なった。これらのデータに対し解析やフィッティングを行い、後の512ピクセルの個々の位置を算出への応用を考えていた。
+はじめ、図\ref{fig: first_scan}に示す三個のピクセルに対し試験的な3Dスキャンを行なった。これらのデータに対し詳細な解析やフィッティングを行い、512ピクセルの位置を求める手法への応用を考えていた。
 
 \begin{figure}[h]
     \begin{tabular}{cc}
@@ -55,20 +202,30 @@ MEG II実験において、pTCはドリフトチェンバー(CDCH)との陽電�
       \begin{minipage}[t]{0.45\hsize}
         \centering
         \includegraphics[keepaspectratio, scale=0.6]{images/first_threes.png}
+        \caption*{(a)}
       \end{minipage} &
       %---- 2番目の図 --------------------------
       \begin{minipage}[t]{0.45\hsize}
         \centering
         \includegraphics[keepaspectratio, scale=0.6]{images/first_scan.png}
+        \caption*{(b)}
       \end{minipage}
       %---- 図はここまで ----------------------
     \end{tabular}
-    \caption{少数のピクセルに対する試験的な3Dスキャン。左: 実際の写真、右: 3Dスキャンにより取得したデータ}
+    \caption{三個のピクセルに対する試験的な3Dスキャン。(a): 実際の写真、(b): 3Dスキャンにより取得したデータ}
     \label{fig: first_scan}
   \end{figure}
+図\ref{fig: first_scan}(b)の最も奥のピクセルは特に3Dスキャンの状態が良かったため、これに対し一通りの解析を試してみることから始めた。まずは大まかにこのピクセルのみを切り分け、徐々にノイズを排除していくことで、図\ref{fig: first_fit} (a)のようなデータ点群を得た。そしてそれらに対し、プラスチックシンチレータの寸法と同じ$120 {\rm mm} \times 40 (50){\rm mm} \times 5 {\rm mm}$の直方体の最近接面との距離の二乗の総和を最小化するように、回転及び並行移動をパラメータとしてフィットしたものが図\ref{fig: first_fit} (b)である。収束して成功した場合。その際のフィッティングパラメータから元の座標及びピクセルの回転方向が分かるという、素朴ながら効果的な方法であった。
+ 
+\begin{figure}
+    \centering
+    \includegraphics[keepaspectratio, scale=0.4]{images/first_onefit.png}
+    \caption{直方体フィッティングによる試験的な位置測定。(a): 図1.9(b)から切り分けたデータ、(b): (a)のデータ点群をプラスチックシンチレータと同じ寸法の直方体面でフィットした結果}
+    \label{fig: first_fit}
+\end{figure}
   
 \subsection{本測定}
-スキャンデータの概観として、図\ref{fig: US_scan}に3Dスキャナーにより上流側pTCに対し取得したデータ点群を描画したものを示す。
+本測定における3Dスキャンデータの概観として、図\ref{fig: US_scan}に3Dスキャナーにより上流側pTCに対し取得したデータ点群を描画したものを示す。
 
 \begin{figure}[h]
 \begin{center}
@@ -77,6 +234,7 @@ MEG II実験において、pTCはドリフトチェンバー(CDCH)との陽電�
 \label{fig: US_scan}
 \end{center}
 \end{figure}
+
 
 \subsection{スキャンデータの解析}
 
@@ -88,20 +246,23 @@ MEG II実験において、pTCはドリフトチェンバー(CDCH)との陽電�
       \begin{minipage}[t]{0.45\hsize}
         \centering
         \includegraphics[width=7cm]{images/good.png}
+        \caption*{(a)}
       \end{minipage} &
       %---- 2番目の図 --------------------------
       \begin{minipage}[t]{0.45\hsize}
         \centering
         \includegraphics[width=7cm]{images/bad.png}
+         \caption*{(b)}
       \end{minipage}
       %---- 図はここまで ----------------------
     \end{tabular}
-    \caption{}
-    \label{fig: good_badl}
+    \caption{図1.11から切り分けた単一ピクセル。(a): 比較的ムラが少なく多くのデータ点が含まれているピクセル (b): 数カ所しかデータ点が撮れていないピクセル}
+    \label{fig: good_bad}
   \end{figure}
 
-よって、体系的な手法の開発が求められた。これは、将来のスキャンデータにも応用可能であり、開発する価値は高いと考えた。
+図\ref{fig: good_bad}(a)は全ピクセル中でもかなり綺麗にデータが取れているピクセルであったが、そのようなピクセルですら3Dスキャナーの入射光の限界から六面のうち二面は欠損していた。よって前々節で述べた直方体によるフィッティングの手法は、これらのピクセルの位置測定に適しておらず撤回を余儀なくされた。体系的な手法の開発が求められた。これは、将来のスキャンデータにも応用可能であり、開発する価値は高いと考えた。
 
+\subsection{結果}
 \begin{figure}[h]
     \begin{tabular}{cc}
       %---- 最初の図 ---------------------------
@@ -119,14 +280,10 @@ MEG II実験において、pTCはドリフトチェンバー(CDCH)との陽電�
     \caption{}
     \label{fig: scan_pixel}
   \end{figure}
-
-
-\subsection{結果}
 \subsection{考察}
 
 \section{軌跡再構成による位置較正の試み}
 \subsection{原理}
-\subsection{課題}
 \subsection{考察}
 
 \section{各ピクセルの位置のずれが与える影響の評価}
