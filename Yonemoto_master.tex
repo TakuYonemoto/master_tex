@@ -21,20 +21,25 @@
 \usepackage{ifthen}
 \usepackage{mathdesign}
 \usepackage{wrapfig}
+\usepackage{pxjahyper}
+
+
+\pagestyle{headings}
 
 \newboolean{masterflag}
 \setboolean{masterflag}{false}
 
+
 \title{
 修士論文\\[1.8cm]
-{\bf MEG II実験におけるマルチピクセル陽電子タイミングカウンターの位置較正に関する研究} \\
-{\LARGE Research on Position Calibration of Multi-pixelated Positron Timing Counter in MEG II Experiment}
+{\bf MEG II実験におけるマルチピクセル陽電子タイミングカウンターの位置較正} \\
+{\LARGE Position Calibration of Multi-pixelated Positron Timing Counter in MEG II Experiment}
 \\[0.8cm]}
 \author{東京大学大学院 理学系研究科 物理学専攻\\
 素粒子物理国際研究センター 森研究室\\ \\
 35-196101\\[2.5mm]
 \LARGE 米本 拓}
-\date{2020年 1月}
+\date{2021年 1月}
 
 \begin{document}
 \setboolean{masterflag}{true}
@@ -42,9 +47,9 @@
 \maketitle
 \chapter*{概要}
 
-標準模型を超える物理の$\mu^+ \to e^+\gamma$崩壊を世界最高感度で探索したMEG実験では、崩壊分岐比に上限値$\mathcal{B} (\mu^+ \to e^+\gamma) < 4.2 \times 10^{-13} (90\% \; {\rm C.L.})$を与えたが発見には至らなかった。後継実験における改善策として、検出器の性能を向上させることで偶発的背景事象をより強力に抑制し、最大強度の$\mu^+$ビームを使用するというものがあった。MEG II実験では、$\mu^+$ビームの強度を最大化し、レート耐性と測定分解能を高めた新たなデザインの検出器を用いることで、$\mathcal{O}(10^{-14})$の分岐比感度での$\mu^+ \to e^+\gamma$探索を目指している。 
+標準模型を超える物理の$\mu^+ \to e^+\gamma$崩壊をスイスのポールシェラー研究所(PSI)で世界最高感度で探索したMEG実験では、その発見には至らなかったものの崩壊分岐比に上限値$\mathcal{B} (\mu^+ \to e^+\gamma) < 4.2 \times 10^{-13} (90\% \; {\rm C.L.})$を与えた。後継のMEG II実験では、PSIにおける最大強度の$\mu^+$ビームを利用し、レート耐性と測定分解能を高めた新たなデザインの検出器を用いることで、$\mathcal{O}(10^{-14})$の分岐比感度での$\mu^+ \to e^+\gamma$探索を目指している。 
 
-偶発的背景事象削減のためには、粒子の時間をより高精度で測定する必要がある。MEG II実験のために新たに開発されたマルチピクセル陽電子タイミングカウンター(pixelated Timing Counter, pTC)は、ミューオン$\mu^+$の崩壊に伴って放出される陽電子$e^+$の時間検出器である。「ピクセル」と呼称される、プラスチックシンチレータと読み出しのシリコン光検出器(SiPM)からなる小型シンチレーションカウンター512個により、$e^+$の時間を精度良く測定する。1個の$e^+$が複数のピクセルを通過するように配置されており、平均9個のピクセルによる測定は$ 30 \rm ps$台の高い時間分解能を実現する。ここで、複数のピクセルによる測定を正しく行うためには各ピクセルの位置を正確に知っている必要があるのだが、512個という数の多さから今まで効果的な位置較正手法が開発されてこなかった。本論文では、各ピクセルについての体系的な位置較正手法の開発、及びピクセルの位置のずれが時間分解能に与える影響の評価について述べる。 \\
+偶発的背景事象削減のためには、粒子の時間をより高精度で測定する必要がある。MEG II実験のために新たに開発されたマルチピクセル陽電子タイミングカウンター(pixelated Timing Counter, pTC)は、ミューオン$\mu^+$の崩壊に伴って放出される陽電子$e^+$の時間検出器である。「ピクセル」と呼称される、プラスチックシンチレータと読み出しのシリコン光センサー(SiPM)からなる小型シンチレーションカウンター512個により、$e^+$の時間を精度良く測定する。1個の$e^+$が平均9個のピクセルを通過するように設計されており、平均9個のピクセルによる測定は$ 30 $ ps台の高い時間分解能を実現する。ここで、複数のピクセルによる測定を正しく行うためには各ピクセルの位置を正確に知っている必要があるのだが、512個という数の多さから今まで効果的な位置較正手法が開発されてこなかった。本論文では、各ピクセルについての体系的な位置較正手法の開発、及びピクセルの位置のずれが時間分解能に与える影響の評価について述べる。 \\
 
 \setcounter{tocdepth}{2}
 \tableofcontents
@@ -57,7 +62,18 @@
 \subfile{concl.tex}
 
 \chapter*{謝辞}
-皆さま心からお礼申し上げます。本当にありがとうございました。
+この論文を書くに至るまで、たくさんの研究機会やご指導をいただいた森俊則教授に心から感謝申し上げます。いつも見守って下さり、ありがとうございます。
+また、大谷航准教授には鋭いご指摘や貴重なアドバイスを何度も頂き、その度に研究に励むことが出来ました。
+
+研究活動において、岩本敏幸氏にはスイスにおける研究生活において手厚いサポートを頂きました。家城佳氏には、他検出器グループの目線からのアドバイスを何度も頂きました。
+内山雄祐氏には、直接陽電子タイミングカウンターのいろはを教えて頂き、自分の研究や生活をいつも気にかけてくださり様々な点でサポートを頂きました。中尾光孝氏には、ご自身が主導されていた陽電子タイミングカウンターの位置較正に関して、引き継ぎ及び直接的なご指導を頂きました。陽電子タイミングカウンターグループの宇佐見正志氏、野内康介氏には、研究内容や方向性に関して沢山のアドバイスを頂きました。他にも、小川真治氏、劉霊輝氏、恩田理奈氏、小林暁氏、辻直希氏、大矢淳氏、島田耕平氏、増田隆之介氏、山本健介氏、池田史氏、吉田圭佑氏、村田樹氏といった素晴らしい同僚の方々に恵まれ、充実した研究生活を送ることが出来ました。
+
+また、素粒子物理国際研究センターの秘書の皆様のおかげで滞りなく研究生活を送ることが出来ました。センター内の方々との交流のおかげで、穏やかな日々を過ごすことが出来ました。
+
+書き尽くすことが出来ませんが、この2年間に関わった全ての皆様に感謝致します。
+
+最後に、どんな時でも自分を支えてくれた家族に、心よりの感謝を申し上げます。
+
 
 \begin{comment}
 \part{付録}
@@ -88,9 +104,16 @@ doi: \href{https://doi.org/10.1393/ncr/i2018-10144-0}{10.1393/ncr/i2018-10144-0}
 \bibitem{rare_lep} Y. Kuno, Rare lepton decays, {\it Prog. Part. Nucl. Phys.}, {\bf 82}, 1-20 (2015). \\
 doi: \href{https://doi.org/10.1016/j.ppnp.2015.01.003}{10.1016/j.ppnp.2015.01.003}
 
-
 \bibitem{phys_bg} Y. Kuno and Y. Okada, Muon decay and physics beyond the standard model, {\it Rev. Mod. Phys.}, {\bf 73}, 151 (2001). \\
 doi: \href{http://dx.doi.org/10.1103/RevModPhys.73.151}{10.1103/RevModPhys.73.151}
+\bibitem{KLOE} M. Adinol et al., The tracking detector of the KLOE experiment, {\it Nucl. Instr. Meth. A}, {\bf 448} 51-73 (2002). \\
+doi: \href{http://dx.doi.org/10.1016/S0168-9002(02)00514-4}{10.1016/S0168-9002(02)00514-4.}
+\bibitem{wdb} M. Francesconi et al., The WaveDAQ integrated Trigger and Data Acquisition System for the MEG II experiment. 2018. \href{http://arxiv.org/abs/1806.09218}{arXiv:1806.09218.} 
+
+
+\bibitem{ptc_mc} M. Nishimura et al., Pixelated Positron Timing Counter with SiPM-readout Scintillator for MEG II experiment. {\it PoS (PhotoDet2015)}, 011 (2016). \\
+doi: \href{https://doi.org/10.22323/1.252.0011}{10.22323/1.252.0011}
+\bibitem{nakao} 中尾 光孝、MEG II実験陽電子タイミングカウンターの製作及び較正と大強度ミュー粒子ビームによる性能評価、修士論文、東京大学 (2017年)。
 
 \bibitem{np_strategy} European Strategy for Particle Physics Preparatory Group, Physics Briefing Book (2019). \href{http://arxiv.org/abs/1910.11775}{arXiv:1910.11775.} 
 

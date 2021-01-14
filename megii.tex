@@ -3,19 +3,20 @@
 \begin{document}
 
 \chapter{MEG II 実験}
+ここでは、前章で述べた$\mu^+ \to e^+ \gamma$崩壊を世界最高感度で探索するMEG II実験について述べる。
+
 \section{信号事象と背景事象}
 
 \subsection{信号事象}
-図\ref{fig: signal}に示すように、ミューオンの二体崩壊$\mu^+ \to e^+ \gamma$において放出される$e^+$と$\gamma$は、
+図\ref{fig: signal}に示すように、静止ミューオンの二体崩壊$\mu^+ \to e^+ \gamma$において放出される$e^+$と$\gamma$は、
 
 \begin{itemize}
 \item 放出が同時であること
 \item 放出が反対方向であること
-\item お互いのエネルギーが親粒子の$\mu^+$の半分52.8 MeVであること
+\item お互いのエネルギーが親粒子の$\mu^+$の質量の半分52.8 MeVであること
 \end{itemize}
 
 という特徴がある。これら三つの条件から、$\mu^+ \to e^+ \gamma$崩壊を信号事象として選別することが可能となる。
-
 \begin{figure}[h]
  \begin{center}
   \includegraphics[width=4cm]{./images/signal.png}
@@ -26,19 +27,19 @@
 
 \subsection{背景事象}
 MEG II実験における背景事象は、物理的背景事象と偶発的背景事象の二種類がある(図\ref{fig: bg})。
-前者は、ミューオンの輻射崩壊($\mu^+ \to e^+\nu_e\bar{\nu}_{\mu}\gamma$)由来の$e^+$と$\gamma$によるものである。$\nu_e$、$\bar{\nu}_{\mu}$のエネルギーが小さい場合、これは二体崩壊に近い事象となってしまう。しかし\cite{phys_bg}によれば、そのような背景事象の分岐比は$e^+$と$\gamma$のエネルギー分解能から見積もられ、MEG II実験においてそれは$\mathcal{O}(10^{-15})$程度である。これは現在の探索感度において無視できる。
+前者は、ミューオンの輻射崩壊($\mu^+ \to e^+\nu_e\bar{\nu}_{\mu}\gamma$)由来の$e^+$と$\gamma$によるものである。$\nu_e$、$\bar{\nu}_{\mu}$のエネルギーが小さい場合、これは二体崩壊に近い事象となってしまう。しかし\cite{phys_bg}によれば、そのような背景事象の分岐比は$e^+$と$\gamma$のエネルギー分解能から、MEG II実験において$\mathcal{O}(10^{-15})$程度と見積もられる。これは現在の探索感度において無視できる。
 
 \begin{figure}[h]
     \begin{tabular}{cc}
       %---- 最初の図 ---------------------------
       \begin{minipage}[t]{0.45\hsize}
         \raggedleft
-        \includegraphics[width=3.5cm]{images/phys_bg.png}
+        \includegraphics[width=4cm]{images/phys_bg.png}
       \end{minipage} &
       %---- 2番目の図 --------------------------
       \begin{minipage}[t]{0.45\hsize}
         \raggedright
-        \includegraphics[width=3.5cm]{images/acc_bg.png}
+        \includegraphics[width=4cm]{images/acc_bg.png}
       \end{minipage}
       %---- 図はここまで ----------------------
     \end{tabular}
@@ -46,28 +47,113 @@ MEG II実験における背景事象は、物理的背景事象と偶発的背�
     \label{fig: bg}
 \end{figure}
 
-後者は、主にミシェル崩壊由来の$e^+$と、輻射崩壊や電子-陽電子対消滅に由来する偶発的な$\gamma$が混ざってしまい、検出器の分解能の範囲で信号事象の条件を満たしてしまうものである。これは高レートのビーム下において前者よりも支配的な背景事象であり、このような事象が起こる回数を$N_{acc}$とすると、
+後者は、主にミシェル崩壊由来の$e^+$と、輻射崩壊や電子-陽電子対消滅に由来する偶発的な$\gamma$が、検出器の分解能の範囲で信号事象の条件を満たしてしまうものである。これは高レートのビーム下において前者よりも支配的な背景事象であり、このような事象が起こる回数を$N_{acc}$とすると、
 \begin{align}
-N_{acc} \propto (R_\mu)^2 \times (\Delta E_\gamma)^2 \times \Delta p_e \times (\Delta \theta_{e\gamma})^2 \times \Delta t_{e\gamma} \times T
+N_{acc} \propto (R_\mu)^2 \times (\Delta E_\gamma)^2 \times \Delta p_{e^+} \times (\Delta \theta_{e^+ \gamma})^2 \times \Delta t_{e^+ \gamma} \times T
 \end{align}
-と書ける。ここで、$R_\mu$はビーム強度、$E_\gamma$は$\gamma$のエネルギー、$p_e$は$e^+$の運動量、$\theta_{e\gamma}$は$e^+$と$\gamma$の開き角、$t_{e\gamma}$は$e^+$と$\gamma$の時間差、$T$は測定時間を表し、$\Delta$はそれぞれの測定分解能を表す。MEG II実験における探索感度向上において最も重要なことはビーム強度の最大化であるため、$N_{acc}$抑制に向けて各検出器には高い分解能が求められる。
+と書ける。ここで、$R_\mu$はビーム強度、$E_\gamma$は$\gamma$のエネルギー、$p_{e^+}$は$e^+$の運動量、$\theta_{e^+ \gamma}$は$e^+$と$\gamma$の開き角、$t_{e^+ \gamma}$は$e^+$と$\gamma$の時間差、$T$は測定時間を表し、$\Delta$はそれぞれの測定分解能を表す。MEG II実験における探索感度向上において$R_\mu$の最大化は最も重要であり、それと$N_{acc}$抑制を両立するために各検出器には高い分解能が求められる。
 
+
+\section{実験の概要}
+図\ref{fig: MEG II}に、MEG II実験における検出器の外観を示す。陽電子タイミングカウンター(\ref{sec: ptc}節及び\ref{sec: ptc}章)、ドリフトチェンバー(\ref{sec: cdch}節)、液体キセノンガンマ線検出器(\ref{sec: xec}節)、輻射崩壊検出器(\ref{sec: rdc}節)の4つの検出器からなっている。他に、陽電子をエネルギーに応じた半径で螺旋運動させるためのCOBRA(COnstant Bending RAdius)電磁石、ミューオンを静止崩壊させるためのターゲットを用いる。信号事象において互いに反対方向に放出される$e^+$と$\gamma$を、高効率で検出出来るような検出器の配置となっている。表\ref{tab: megii_exp}に、各観測可能量の分解能及び$e^+$と$\gamma$の検出効率について、MEG実験における値とMEG II実験における見積もりを示す。
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[width=7cm]{images/MEGII.jpg}
+\includegraphics[width=9cm]{images/MEGII.jpg}
 \caption{MEG II実験における検出器の概観}
+\label{fig: MEG II}
 \end{center}
 \end{figure}
 
+\begin{table}[h]
+ \centering
+ \caption{MEG II実験における分解能と検出効率の見積もり \cite{MEG} \cite{MEGII}}
+ \label{tab: megii_exp}
+  \begin{tabular}{ccc}
+   \hline
+   分解能 & MEG & MEG II \\
+   \hline
+   \hline
+   $e^+$のエネルギー $\Delta E_{e^+}$ & 306 keV & 130 keV\\
+   $e^+$の放出角度 $\Delta \theta_{e^+}, \Delta \phi_{e^+} $ & 9.4 mrad, 8.7 mrad & 5.3 mrad, 3.7 mrad \\
+   $\gamma$の転換位置 $\Delta u, \Delta v, \Delta w $ & 5 mm, 5 mm, 6 mm & 2.6 mm, 2.2 mm, 5 mm \\
+   $\gamma$のエネルギー $\Delta E_{\gamma} / E_{\gamma}$ (w < 2cm), (w > 2cm) & 2.4 \%, 1.7 \%  & 1.1 \%, 1.0 \% \\
+   $e^+$と$\gamma$の時間差 $\Delta t_{e^+\gamma}$ & 122 ps & 84 ps \\
+   \hline
+   検出効率 & MEG & MEG II \\
+   \hline
+   \hline
+   $e^+$ & 30 \% & 70 \% \\
+   $\gamma$ & 63 \% & 69 \% \\
+   \hline
+  \end{tabular}
+\end{table}
 
 
-\section{陽電子タイミングカウンター (pTC)}
-\section{ドリフトチェンバー (CDCH)}
-\section{液体キセノンガンマ線検出器 (LXe)}
-\section{輻射崩壊検出器 (RDC)}
+\section{陽電子タイミングカウンター (pixelated Timing Counter, pTC)}
+\label{sec: ptc}
+4章で主に記述するが、陽電子の時間を高精度で測定するための検出器である(図\ref{fig: pTC_pic})。プラスチックシンチレータで発生したシンチレーション光を、直列に接続した6つのシリコン光検出器(SiPM)で両端から読み出す小型シンチレーションカウンター「ピクセル」からなる。512個のピクセルを用いた複数ヒット測定により、$30$ psの高い時間分解能を実現している。
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=9cm]{images/pTC_pic.png}
+\caption{陽電子タイミングカウンター (pTC)}
+\label{fig: pTC_pic}
+\end{center}
+\end{figure}
+
+\section{ドリフトチェンバー (Cylindrical Drift CHamber, CDCH)}
+\label{sec: cdch}
+陽電子の飛跡検出のための、全長1.93mの一体型ワイヤーチェンバーである。KLOE実験の技術をもとにしており\cite{KLOE}、約1700本のセンスワイヤーと約10000本のフィールドワイヤーが計9層にわたって張られている。各層のセンスワイヤーは$6$-$8^\circ$の角度を付けて張られており、隣り合う層は互い違いになっている。チェンバーガスはヘリウム(He):ブタン(${\rm C_4 H_{10}}$) = 90:10の混合ガスで、一体型のチェンバーであることから全体の物質量も抑えている。小さなドリフトセルからなることから、レート耐性も備えている(図\ref{fig: CDCH})。
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=9cm]{images/chamber.png}
+\caption{ドリフトチェンバー(CDCH)}
+\label{fig: CDCH}
+\end{center}
+\end{figure}
+
+\section{液体キセノンガンマ線検出器 (Liquid-Xenon calorimeter, LXe)}
+\label{sec: xec}
+有効体積800 Lの液体キセノンを用いたガンマ線検出器である。約700本の光電子増倍管(PMT)と約4000個のSiPMで、液体キセノンのシンチレーション光を読み出す。シンチレーション光の分布から位置と時間を再構成し、シンチレーション光を足し合わせることでエネルギーを再構成する。前身のMEG実験と共通して用いる検出器だが、内側に新しく多数のSiPMを搭載したことで、より高精細な読み出しが可能となり、特にエネルギー分解能と位置分解能の向上が期待されている(図\ref{fig: LXe1}、\ref{fig: LXe2})。
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=6cm]{images/xec.png}
+\caption{液体キセノンガンマ線検出器(LXe)}
+\label{fig: LXe1}
+\end{center}
+\end{figure}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=11cm]{images/xec2.png}
+\caption{LXeのMEG IIにおけるアップグレード。MEG実験(左の画像)の時には分離出来ていなかったイベントを、PMTの代わりに搭載したSIPMのおかげで分離できるようになった(右の画像)。}
+\label{fig: LXe2}
+\end{center}
+\end{figure}
+\section{輻射崩壊検出器 (Radiative Decay Counter, RDC)}
+\label{sec: rdc}
+ミューオンの輻射崩壊により放出される回転半径の小さな陽電子を検出することで、偶発的背景事象の原因となる輻射崩壊由来のガンマ線を同定するための検出器である。ビーム下流側には時間測定用プラスチックシンチレータとエネルギー測定用LYSO結晶からなるものが設置されており(図\ref{fig: RDC})、上流側についてはビーム通過地点という過酷な環境下で動作するような検出器を開発中である。
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=6cm]{images/rdc.png}
+\caption{輻射崩壊検出器 (RDC)}
+\label{fig: RDC}
+\end{center}
+\end{figure}
+
 \section{DAQ}
-\section{展望}
+検出器デザインの高精細化、及び高レート下でのパイルアップ事象識別のための検出器全チャンネルでの波形取得により、MEG II実験ではMEG実験の3倍の読み出しチャンネル数が必要である。さらに、多くのSiPMが新たに用いられることに伴って、その小さな電気信号を増幅させるようなアンプ機能が求められた。そこでトリガーやDAQの基本的な機能を纏めつつ、１ボードあたり16チャンネルを読み出し、0.5倍から100倍までの信号増幅が可能なWaveDREAMボードが新しく開発された\cite{wdb}(図\ref{fig: wdb1}、図\ref{fig: wdb2})。
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=10cm]{images/wdb1.png}
+        \caption{WaveDREAMボードの回路図}
+        \label{fig: wdb1}
+\end{figure}
+\begin{figure}
+        \centering
+        \includegraphics[width=7cm]{images/wdb2.png}
+        \caption{WaveDREAMボード}
+        \label{fig: wdb2}
+\end{figure}
 
 \ifthenelse{\boolean{masterflag}}
 {  }{

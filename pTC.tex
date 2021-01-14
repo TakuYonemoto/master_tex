@@ -2,52 +2,163 @@
 
 \begin{document}
 \chapter{陽電子タイミングカウンター}
+\label{chap: ptc}
 本章では、本研究の対象である陽電子タイミングカウンター(pTC)の原理及びその構成についてまとめる。
-\section{MEG II実験でのpTCへの要請}
+\section{要求される性能}
 
 MEG II実験において、pTCは陽電子の時間を測定することで、ミューオンの崩壊時刻を精度良く求める役割を担う。
 
-信号事象である$\mu^+ \to e^+\gamma$崩壊が起こった場合、崩壊時刻の分解能$\sigma_{t_{vertex}}$は以下の式で与えられる。 \\
+信号事象である$\mu^+ \to e^+\gamma$崩壊が起こった場合、崩壊時刻の分解能$\sigma_{t_{e^+\gamma}}$は以下の式で与えられる。 \\
 
 \begin{eqnarray}
-\sigma_{t_{vertex}} & = & \sqrt{\sigma_{t_{e^+}}^2 + \sigma_{t_{\gamma}}^2} \nonumber \\ 
+\sigma_{t_{e^+\gamma}} & = & \sqrt{\sigma_{t_{e^+}}^2 + \sigma_{t_{\gamma}}^2} \nonumber \\ 
 & = & \sqrt{\left( \frac{\sigma_{l_{e^+}}^{\rm CDCH}}{c} \right)^2 + (\sigma_{t_{e^+}}^{\rm pTC})^2 + \sigma_{t_{\gamma}}^2}
 \end{eqnarray}
 
-ここで、$\sigma_{t_{e^+}}$は陽電子測定の時間分解能、$\sigma_{t_{\gamma}}$はガンマ線測定の時間分解能、$\sigma_{l_{e^+}}^{\rm CDCH}$はドリフトチェンバー(CDCH)による陽電子軌跡の不確かさ、$c$は光速、$\sigma_{t_{e^+}}^{\rm pTC}$はpTCによる陽電子測定の時間分解能を表す。最新のモンテカルロシミュレーションにより、液体キセノンガンマ線検出器(LXe)によるガンマ線測定の時間分解能は$50-70 \rm ps$、CDCHによる陽電子軌跡の不確かさは$\sigma_{l_{e^+}}^{CDCH}/c \sim 10 \rm ps$と見積もられているため、$\sigma_{t_{vertex}} \le 84 \rm ps$を達成する(3.7)ためには、pTCは$\sigma_{t_{e^+}}^{\rm pTC} \sim 46 \rm ps$を満たす必要がある。
+ここで、$\sigma_{t_{e^+}}$は陽電子測定の時間分解能、$\sigma_{t_{\gamma}}$はガンマ線測定の時間分解能、$\sigma_{l_{e^+}}^{\rm CDCH}$はドリフトチェンバー(CDCH)による陽電子飛跡長測定の不確かさ、$c$は光速、$\sigma_{t_{e^+}}^{\rm pTC}$はpTCによる陽電子測定の時間分解能を表す。最新のモンテカルロシミュレーションにより、液体キセノンガンマ線検出器(LXe)によるガンマ線測定の時間分解能は$50$-$70\ \rm ps$、CDCHによる陽電子飛跡長測定の不確かさは$\sigma_{l_{e^+}}^{CDCH}/c \sim 10 \ \rm ps$と見積もられており、pTCは$\sigma_{t_{e^+}}^{\rm pTC} \sim 46 \ \rm ps$を満たすことで$\sigma_{t_{e^+\gamma}} \le 84 \ \rm ps$を得る(表\ref{tab: megii_exp})。
 
-\subsection{MEG実験におけるTC}
-MEG実験における陽電子タイミングカウンター(TC)は、30本の大型シンチレーターバーと読み出しの光電子増倍管(PMT)からなるものであった。問題点としては、シンチレーターバーが大きいことで読み出し以前の不定性が生まれること、また同様の理由からパイルアップイベントに弱いことがあった。加えて、シンチレーターバー間での時間較正の精度も悪く、COBRA磁場下でのPMTの劣化なども相まって、最終的な運用における陽電子の時間分解能は$70 \rm ps$程度であった。
+\subsection{MEG実験における陽電子タイミングカウンター(TC)}
+MEG実験における陽電子タイミングカウンター(TC)は、30本の大型シンチレータバーと読み出しの光電子増倍管(PMT)からなるものであった(図\ref{fig: meg_tc})。問題点としては、シンチレータバーが大きいことでヒット位置の不定性が生まれること、また同様の理由からパイルアップイベントに弱いことがあった。加えて、シンチレータバー間での時間較正の精度も悪く、COBRA磁場下でのPMTの劣化なども相まって、最終的な運用における陽電子の時間分解能は$70 \ \rm ps$程度であった。
 
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=7cm]{images/MEGTC.png}
 \caption{MEG実験における陽電子タイミングカウンター(TC)}
+\label{fig: meg_tc}
 \end{center}
 \end{figure}
 
 \subsection{MEG II実験におけるアップグレード}
-MEG II実験では、pTCは小型シンチレーションカウンター「ピクセル」を合計512個を用いることで、高い時間分解能を得る。MEG実験におけるTCからの主な改善点として、
+MEG II実験では、小型シンチレーションカウンター「ピクセル」を合計512個を用いることで高い時間分解能を得るマルチピクセルタイミングカウンター(pixelated Timing Counter, pTC)が新しくデザインされた(図\ref{fig: megii_ptc_design})。MEG実験におけるTCからの主な改善点として、
 \begin{itemize}
-\item 高性能な光検出器であるシリコン光検出器(SIPM)により、各ピクセルが小型かつ高い時間分解能を持つ。
-\item 複数ヒット検出により、全体としての時間分解能はさらに高精度になる。
-\item 各ピクセルが小型であるため、パイルアップイベントが生じにくい。
+\item 高性能な光検出器であるシリコン光検出器(SiPM)により、各ピクセルが小型かつ高い時間分解能を持つ。
+\item 複数ピクセルによる時間測定により、全体としての時間分解能はさらに高精度になる。
+\item 各ピクセルが小型であるため、一つのピクセルに複数の陽電子が当たるようなパイルアップ事象が生じにくい。
 \item SiPMには磁場耐性がある。
 \end{itemize}
 
-\section{マルチピクセル化された陽電子タイミングカウンター}
-\subsection{複数ヒットの仕組み}
-\subsection{時間分解能}
-\subsection{位置較正}
-\section{ピクセル (小型カウンター)}
-\subsection{SiPM}
-\subsection{プラスチックシンチレータ}
-\section{読み出し}
-\section{解析}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=11cm]{images/pTC_design.png}
+\caption{MEG II実験における陽電子タイミングカウンター(pTC)}
+\label{fig: megii_ptc_design}
+\end{center}
+\end{figure}
 
+配置する個数については当初の構想からヒット数の少ないカウンターを削減することで最適化が図られており(図\ref{fig: pixel_num})、陽電子が垂直にピクセルに入射するように各ピクセルはビーム方向をz軸、円筒座標系における方位角を$\phi$としたz-$\phi$平面において$45^\circ$傾いている。
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=12cm]{images/pixel_num.png}
+\caption{構造体に載せるカウンターの個数を減らしていった様子}
+\label{fig: pixel_num}
+\end{center}
+\end{figure}
+
+
+\section{小型シンチレーションカウンター「ピクセル」}
+pTCの各「ピクセル」は図\ref{fig: pic_pixel}のように構成されている。高さが40 mm または50 mm のプラスチックシンチレータ(Saint Gobain BC-422)の両端に6つのSiPM(ASD-NUV3S-P High-Gain)を光学セメント(Saint Gobain BC-600) を用いて接着している。 その上でシンチレータを32 $\mu$ mの反射材(ESR2フィルム)で巻き, さらにSiPM を含めた全体を遮光シート(Dupon Tedlar)を用いて遮光する。陽電子がシンチレータを通過することによって発生したシンチレーション光を両端のSiPMで検出する仕組みである。個々のカウンターの時間分解能は、$\sigma_{t_{e^+}}^{single} \sim 80$ ps程度である。
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=12cm]{images/pic_pixel.png}
+\caption{pTCを構成する小型シンチレーションカウンター「ピクセル」。pTCを設置する際のドッキング部分に対応するため、高さと足が異なるピクセルが4種類ある。}
+\label{fig: pic_pixel}
+\end{center}
+\end{figure}
+
+
+\section{時間較正}
+pTCの時間較正法には、レーザー光を用いるものとミシェル崩壊由来の陽電子を利用するものの二種類があり、それぞれ「レーザー較正」、「ミシェル較正」と呼ばれている。表\ref{tab: ptc_timecalib}にそれぞれの方法の特徴をまとめる。
+
+\begin{table}[h]
+ \centering
+ \caption{pTCの時間較正法}
+ \label{tab: ptc_timecalib}
+  \begin{tabular}{lcc}
+   \hline
+    & レーザー較正 & ミシェル較正 \\
+   \hline
+   較正可能なピクセルの数 & 432 & 512 \\
+   不確かさ & 24 ps \cite{nakao} & $\sim$ 10 ps \\
+   備考 & ビーム無しで実行可能 & 全てのピクセルを高い精度で較正可能 \\
+   \hline
+  \end{tabular}
+\end{table}
+
+\subsection{レーザー較正}
+レーザー較正では、各ピクセルに装着されたレーザーファイバー(図\ref{fig: pic_pixel})を通じてレーザー光をプラスチックシンチレータに照射し、その検出時間を比較することで較正を行う。ドッキング部の80ピクセルを除いた432ピクセルに対し、図\ref{fig: lasercalib}に示す機構によって光源からのレーザー光を分配している。各部分の光路長は事前に測定されており、レーザー光による信号の検出時間から差し引きすることで各ピクセルの時間オフセットを測定する。後述するミシェル較正に対し、ビームが無くても実行可能なことが利点である。
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=12cm]{images/lasercalib.png}
+\caption{レーザー較正のセットアップ}
+\label{fig: lasercalib}
+\end{center}
+\end{figure}
+
+\subsection{ミシェル較正}
+ミシェル較正では、ミシェル崩壊由来の陽電子の軌跡再構成より各ピクセル間の飛行時間(Time of flight, TOF)を得て、それと各ピクセルにおける検出時間を比較することで較正を行う。具体的には、以下に示す$\chi^2$を最小化することにより、各ピクセルの時間オフセットを得る。
+
+\begin{align}
+\chi^2 = \sum^{N_{event}}_{i} \sum^{N_{hit}}_{j} \left(\frac{t_{i,j} - (t_{i,1} + TOF_{i,1\to j} + \Delta{T_j}) }{\sigma} \right)^2
+\end{align}
+
+ここで、$N_{event}$はイベント数、$N_{hit}$はヒットしたピクセルの数、$t_{i,j}$は$i$番目のイベントにおける$j$番目のヒットの検出時間、$TOF_{i,1\to j}$は陽電子軌跡再構成により見積もられる最初のヒットから$j$番目のヒットまでのTOF、$\Delta{T_j})$は$j$番目のヒットピクセルの時間オフセットである。ヒット数の多寡によってピクセル毎に較正の精度は異なるものの、ビーム下での測定により全てのピクセルに対し時間較正を行うことが可能である。
+
+\section{期待される性能}
+
+実際の運用におけるpTCの性能を見積もるために、ピクセル間の時間較正や読み出し回路のジッターによる不確かさなどを考慮した時間分解能$\sigma_{t_{e^+}}^{\rm pTC}$の見積もりを行う。ヒット数$N_{hit}$に対して、
+
+\begin{align}
+\sigma_{t_{e^+}}^{\rm pTC} (N_{hit}) = \sqrt{\frac{(\sigma_{t_{e^+}}^{single})^2 + (\sigma^{inter-pixel})^2 + (\sigma^{elec})^2}{N_{hit}} + (\sigma_{const})^2}
+\end{align}
+
+ここで、$\sigma_{t_{e^+}}^{single}$はピクセル単体の時間分解能、$\sigma^{elec}$は読み出し回路のジッターに伴う不確かさ、$\sigma_{const}$は$1/\sqrt{N_{hit}}$で小さくならないようなヒット数に依らない不確かさである。これについて2016年パイロットランの結果を用いた評価が\cite{nakao}でなされており、$\sigma_{t_{e^+}}^{single} \sim 80 \ {\rm ps}$、$\sigma^{inter-pixel} \sim 39 \ {\rm ps}$、$\sigma^{elec} \sim 47 \ {\rm ps}$、$\sigma^{const} \sim 10 \ {\rm ps}$により、平均的なヒット数9に対し(図\ref{fig: nhits})、
+
+\begin{align}
+\sigma_{t_{e^+}}^{\rm pTC} (N_{hit}=9) = \sqrt{\frac{(80 \ \rm ps)^2 + (39 \ \rm ps)^2 + (47\ \rm ps)^2}{9} + (10\ \rm ps)^2} \simeq 35\ \rm ps
+\end{align}
+
+これは図\ref{fig: nhits_func}とも一致している。
+
+
+\begin{figure}[h]
+   \begin{tabular}{cc}
+     \begin{minipage}[t]{0.45\hsize}
+       \centering
+       \includegraphics[width=6cm]{images/nhits.png}
+       \caption{モンテカルロシミュレーションによって見積もられた、$\mu \to e^+\gamma$陽電子がヒットするピクセル数の分布\cite{ptc_mc}}
+       \label{fig: nhits}
+     \end{minipage} &
+     \begin{minipage}[t]{0.45\hsize}
+       \centering
+       \includegraphics[width=6cm]{images/nhits_func.png}
+       \caption{ヒットするピクセル数の関数としての時間分解能\cite{ptc_mc}}
+       \label{fig: nhits_func}
+     \end{minipage}
+   \end{tabular}
+\end{figure}
+
+
+\section{pTCにおける陽電子解析}
+図\ref{fig: pTC_analy}に示すチャートのようにして解析を行う。DRS/WaveDREAM で取得したSiPM からの波
+形情報を用いた波形解析、各波形から得た時間や波高などの情報を元にしたヒット再構成、再構成されたヒッ
+トの情報を元に同じ飛跡に属するヒットのクラスター化を行い、その後CDCH の軌跡再構成情報から求めた陽電子がpTC にヒットする位置とその運動量を求め、CDCH とpTC 間のマッチングを行う。
+マッチングを行った結果の飛跡情報を元にTC 内の複数ヒットを合わせることで陽電子の再構成が完了する。CDCHとのマッチングや最終的な陽電子再構成方法は現在も開発が進められている。
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=12cm]{images/pTC_analy.png}
+\caption{陽電子解析のチャート}
+\label{fig: pTC_analy}
+\end{center}
+\end{figure}
+
+
+\begin{comment}
 \section{時間較正}
 \subsection{レーザー較正}
 \subsection{ミシェル較正}
+\end{comment}
 
 \ifthenelse{\boolean{masterflag}}
 { }{
